@@ -1,27 +1,36 @@
-# React + TypeScript + Vite
+## Table of contents
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [General info](#project-description)
+- [Features](#features)
+- [Setup](#setup)
+- [Author](#author)
+- [Technologies](#technologies)
 
-Currently, two official plugins are available:
+## Project description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It is web application for Dexola Camp with wide blockchain staking functionality.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- This application gives you the possibility to connect your wallet to smart contract and start staking, withdraw and claim rewards for it. 
+- The user can view his/her staked balance, APR percentage, days left and amount of rewards.
 
-- Configure the top-level `parserOptions` property like this:
+## Setup
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+After cloning the repo to run this project:
+
+```bash
+npm install
+
+To run the development mode:
+
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Author
+
+- [Yanа Usatiuk](https://www.linkedin.com/in/yana-usatiuk-223aa1262/)
+
+## Technologies
+
+React + TypeScript + Vite + Sass
