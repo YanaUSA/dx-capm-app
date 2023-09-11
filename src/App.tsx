@@ -1,14 +1,29 @@
-import { useState } from 'react'
-import './App.scss'
+import { Route, Routes } from "react-router-dom";
+import Layout from './components/Layout/Layout';
+import LoginPage from "./pages/LoginPage/LoginPage";
+import HomePage from "./pages/HomePage/HomePage";
+import StakePage from "./pages/StakePage/StakePage";
+import WithdrawPage from "./pages/WithdrawPage/WithdrawPage";
+import RewardsPage from "./pages/RewardsPage/RewardsPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
-function App() {
+import "./App.scss";
 
 
+
+const App = () => {
   return (
-    <>
-      <h1>Vite + React</h1>
-    </>
-  )
-}
+      <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />        
+        <Route path="/stake" element={<StakePage />} />
+        <Route path="/withdraw" element={<WithdrawPage />} />
+        <Route path="/rewards" element={<RewardsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+  );
+};
 
-export default App
+export default App;
