@@ -1,0 +1,58 @@
+@import "@styles/breakpoints.module.scss";
+@import "@styles/theme-colors.module.scss";
+@import "@styles/fonts.module.scss";
+@import "@styles/mixins.module.scss";
+
+// --- common margin styles --- //
+
+.container {
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @include respond-to("tablet") {
+    padding: 0 48px;
+  }
+
+  @include respond-to("desktop") {
+    width: 1440px;
+    padding: 0 120px;
+  }
+}
+
+main {
+  margin-top: 40px;
+
+  @include respond-to("tablet") {
+    margin-top: 70px;
+  }
+}
+
+// --- common text styles --- //
+
+h1 {
+    font-family: $kanit;
+    font-size: getFontSize("m-medium");
+    font-weight: 500;
+    line-height: 0.7;
+}
+
+h2 {
+  font-family: $kanit;
+  font-size: getFontSize("s-medium");
+  font-weight: 500;
+  line-height: 1.5;
+
+  @include respond-to("tablet") {
+    font-size: getFontSize("m-medium");
+  }
+}
+
+p {
+  font-size: getFontSize("m-small");
+  line-height: 1.3;
+  color: getColor("light-grey");
+
+  @include respond-to("tablet") {
+    font-size: getFontSize("l-small");
+  }
+}

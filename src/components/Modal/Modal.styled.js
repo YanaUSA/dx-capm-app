@@ -1,3 +1,9 @@
+@import "@styles/breakpoints.module.scss";
+@import "@styles/theme-colors.module.scss";
+@import "@styles/fonts.module.scss";
+@import "@styles/mixins.module.scss";
+
+
 import styled from 'styled-components';
 
 export const ModalBackdrop = styled.div`

@@ -1,12 +1,20 @@
-// import styles from './Footer.module.scss';
+import styles from './Footer.module.scss';
 
 const Footer = () => {
     return (
-        <footer>
-            <div>
-        <h2>Footer</h2>
-            </div>
-        </footer>
+        <>
+            <footer className={styles.footer} aria-label="application footer">
+                <p
+                    className={styles.developedBy}
+                    aria-label="footer-description"
+                >
+                    Designed by Dexola - 2023
+                </p>
+                <p className={styles.copywrite} aria-label="footer-description">
+                    &#169; All rights reserved
+                </p>
+            </footer>
+        </>
     );
 };
 

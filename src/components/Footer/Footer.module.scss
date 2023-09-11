@@ -1,0 +1,64 @@
+@import '@styles/breakpoints.module.scss';
+@import '@styles/theme-colors.module.scss';
+@import '@styles/fonts.module.scss';
+@import '@styles/mixins.module.scss';
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100vw;    
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 24px;
+    border-top: 1px solid getColor('accent-blue');
+
+    @include respond-to('tablet') {
+        padding: 0 48px;
+    }
+
+    @include respond-to('desktop') {
+        padding: 0 40px;
+    }
+  }
+
+.developedBy {
+    font-size: getFontSize('xs-small');
+    font-weight: 400;
+    line-height: 1.36;
+    letter-spacing: -0.02em;
+    margin-top: 8px;
+    margin-bottom: 17px;
+
+    @include respond-to('tablet') {
+        margin: 16px 0;
+        font-size: getFontSize('m-small');
+        line-height: 1.28;
+    }
+
+    @include respond-to('desktop') {
+        margin-bottom: 26px;
+    }
+}
+
+.copywrite {
+    font-size: getFontSize('xs-small');
+    font-weight: 400;
+    line-height: 1.36;
+    letter-spacing: -0.02em;
+    margin-top: 8px;
+    margin-bottom: 17px;
+
+    @include respond-to('tablet') {
+        margin: 16px 0;
+        font-size: getFontSize('m-small');
+        line-height: 1.28;
+    }
+
+    @include respond-to('desktop') {
+        margin-bottom: 26px;
+    }
+}

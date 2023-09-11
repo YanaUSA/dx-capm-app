@@ -3,10 +3,12 @@ import { Suspense } from 'react';
 import AppBar from '../AppBar/AppBar';
 import Footer from '../Footer/Footer';
 
+import styles from './Layout.module.scss';
+
 
 const Layout = () => {
     return (
-        <div>
+        <div className={styles.container}>
             <AppBar />
             <Suspense fallback={null}>
                 <main>

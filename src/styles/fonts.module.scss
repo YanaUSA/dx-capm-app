@@ -9,10 +9,11 @@ $fontSizes: (
     "m-small": 14px,
     "l-small": 16px,
     "s-medium": 18px,
-    "m-medium": 28px,
-    "l-medium": 36px,
-    "s-large": 40px,
-    "m-large": 48px,
+    "m-medium": 24px,
+    "l-medium": 28px,
+    "s-large": 36px,
+    "m-large": 40px,
+    "l-large": 48px,
 );
 
 @function getFontSize($key) {  
