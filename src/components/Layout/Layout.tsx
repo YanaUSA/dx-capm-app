@@ -6,7 +6,7 @@ import Footer from '../Footer/Footer';
 import styles from './Layout.module.scss';
 
 
-const Layout = () => {
+const Layout: React.FC  = () => {
     return (
         <div className={styles.container}>
             <AppBar />

@@ -1,4 +1,50 @@
-@import "@styles/breakpoints.module.scss";
-@import "@styles/theme-colors.module.scss";
-@import "@styles/fonts.module.scss";
-@import "@styles/mixins.module.scss";
+@import '@styles/breakpoints.module.scss';
+@import '@styles/theme-colors.module.scss';
+@import '@styles/fonts.module.scss';
+@import '@styles/mixins.module.scss';
+
+.header {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100vw;
+
+    background-color: getColor('background');
+
+    @include respond-to('tablet') {
+        padding-top: 11px;
+        padding-bottom: 11px;
+    }
+}
+
+.headerBox {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 auto;
+    padding: 0 24px;
+
+    @include respond-to('tablet') {
+        padding: 0 48px;
+    }
+
+    @include respond-to('desktop') {
+        width: 1440px;
+    }
+}
+
+.logoLink {
+    display: flex;
+    align-items: center;
+    fill: getColor('white');
+}
+
+.headerBtn {
+    width: fit-content;
+    padding: 8px 24px;
+
+    @include respond-mob-minMax {
+        font-size: getFontSize('m-small');
+    }
+}
