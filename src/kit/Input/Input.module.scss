@@ -1,0 +1,76 @@
+@import "@styles/breakpoints.module.scss";
+@import "@styles/theme-colors.module.scss";
+@import "@styles/fonts.module.scss";
+@import "@styles/mixins.module.scss";
+
+.label {
+  display: flex;
+}
+
+.labelText {
+  display: inline-flex;
+  margin: 0;
+
+  font-size: getFontSize("s-small");
+  line-height: 1.3;
+  font-weight: 400;
+  color: getColor("white");
+}
+
+.inputContainer {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 16px;
+}
+
+.inputComponent {
+  box-sizing: border-box;
+  width: 100%;
+  outline: 1px solid transparent;
+  padding: 8px 0;
+  border-bottom: 1px solid getColor("white");
+  margin-bottom: 20px;
+
+  font-size: getFontSize("m-small");
+  line-height: 1.5;
+  font-weight: 400;
+  color: getColor("white");
+
+  @include respond-to("tablet") {
+    font-size: getFontSize("l-small");
+  }
+
+  &::placeholder {
+    font-size: getFontSize("m-small");
+    line-height: 1.5;
+    font-weight: 400;
+    color: getColor("light-grey");
+
+    @include respond-to("tablet") {
+      font-size: getFontSize("l-small");
+    }
+  }
+
+  &:hover {
+    border-bottom: 1px solid getColor("accent-blue");
+  }
+
+  &:focus-visible {
+    outline: 1px solid getColor("accent-blue");
+  }
+}
+
+// .inputError {
+//     height: 24px;
+//     font-size: getFontSize("s-small");
+//     color: getColor("warning-rose");
+//     animation: fadein 70ms $cubic;
+//   }
+  
+//   .error {
+//       border-bottom: 1px solid getColor("warning-rose");
+//   }
+  
+//     @keyframes fadein {
+//       0%   { opacity: 0; }
+//   }

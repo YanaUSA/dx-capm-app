@@ -1,0 +1,40 @@
+@import '@styles/breakpoints.module.scss';
+@import '@styles/theme-colors.module.scss';
+@import '@styles/fonts.module.scss';
+@import '@styles/mixins.module.scss';
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: $roboto;
+    font-size: getFontSize('l-small');
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding: 12px 40px;
+
+    color: getColor('white');
+    background-color: getColor('main-button-color');
+    outline: none;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+
+    transition: color $transition-time $cubic;
+
+    &:hover,
+    &:focus {
+        color: getColor('light-grey');
+    }
+
+    &:disabled {
+      background-color: getColor('light-grey');
+    }
+
+    @include respond-mob-minMax {
+        width: 100%;
+    }
+}

@@ -1,20 +1,20 @@
 //--- colors ---//
 
 $colors: (
-  "white": #ffffff,
-  "black": #000000,  
-  "dark-grey": #2f2f2f,
-  "light-grey": #b3b3b3,
-  "accent-blue": #204ffe,
-  "accent-green": #20FE51,
-  "accent-red": #FE2D20,
-  "background": #080808, 
-  "main-button-color": #272a2e,
-  "gradient": rgba(47, 75, 201, 1),
+    'white': #ffffff,
+    'black': #000000,
+    'dark-grey': #2f2f2f,
+    'light-grey': #b3b3b3,
+    'accent-blue': #204ffe,
+    'accent-green': #20fe51,
+    'accent-red': #fe2d20,
+    'background': #080808,
+    'main-button-color': #272a2e,
+    'gradient': rgba(47, 75, 201, 1),
 );
 
 @function getColor($key) {
-  @return map-get($colors, $key);
+    @return map-get($colors, $key);
 }
 
 // --- transitions --- //

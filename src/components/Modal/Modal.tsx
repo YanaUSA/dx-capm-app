@@ -7,7 +7,7 @@ import styles from './Modal.module.scss';
 
 const modalRoot = document.querySelector('#modal-root')!;
 
-export const Modal = ({ onClose, children }: ModalProps) => {
+export const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
     useEffect(() => {
         const handleEscape = (e:KeyboardEvent) => {
             if (e.code === 'Escape') {
