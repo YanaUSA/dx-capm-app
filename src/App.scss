@@ -2,3 +2,43 @@
 @import "@styles/theme-colors.module.scss";
 @import "@styles/fonts.module.scss";
 @import "@styles/mixins.module.scss";
+
+
+body {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    // Mobile background-img 1x, 2x
+
+    @include respond-mob-minMax {
+        @include retina-background-image(
+            './assets/images/technology_background_mob',
+            'jpg',
+            100%,
+            100%
+        );
+    }
+
+    // Tab background-img 1x, 2x
+
+    @include respond-to('tablet') {
+        @include retina-background-image(
+            './assets/images/technology_background_tab',
+            'jpg',
+            100%,
+            100%
+        );
+    }
+
+    // PC background-img 1x, 2x
+
+    @include respond-to('desktop') {
+        @include retina-background-image(
+            './assets/images/technology_background_pc',
+            'jpg',
+            100%,
+            100%
+        );
+    }
+}

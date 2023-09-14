@@ -6,13 +6,13 @@ import StakeDashboard from "../StakeDashboard/StakeDashboard";
 
 const AppBar = () => {
   return (
-    <div>
+    <>
       <header>
         <Header />
         <StakeDashboard />
-      </header>      
-      <Navigation />
-    </div>
+        <Navigation />
+      </header>        
+    </>
   );
 };
 

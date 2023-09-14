@@ -1,3 +1,4 @@
+$retina: 'only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)';
 
 @mixin visually-hidden {
     .visually-hidden {
@@ -13,3 +14,16 @@
         overflow: hidden;
     }
 }
+
+@mixin background-size($width, $height: $width) {
+    width: $width;
+    height: $height;
+  }
+
+@mixin retina-background-image($file, $type, $width, $height) {
+    background-image: url($file + '.' + $type);
+    @media #{$retina} {
+      background-image: url($file + '@2x.' + $type);
+      @include background-size($width, $height);
+    }
+  }

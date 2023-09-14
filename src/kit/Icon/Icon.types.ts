@@ -5,4 +5,5 @@ export type IconProps = {
     stroke?: string;
     fill?: string;
     className?: string;
+    ariaLabel?: string;
 };

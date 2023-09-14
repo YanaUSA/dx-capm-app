@@ -19,7 +19,7 @@ const Input: React.FC<InputProps> = ({
     ariaLabel,
     ariaInvalid,
     ariaDescribedby,
-    required=true,
+    required = true,
 }) => {
     return (
         <label className={`${styles.label} ${labelStyle}`}>

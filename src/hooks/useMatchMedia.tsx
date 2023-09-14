@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 
+import {useMatchMediaValues} from './useMatchMedia.types'
+
 const queries = [
     '(max-width: 743px)',
     '(min-width: 744px) and (max-width: 1439px)',
     '(min-width: 1440px)',
 ];
 
-const useMatchMedia = () => {
+const useMatchMedia = (): useMatchMediaValues => {
     const mediaQueryLists = queries.map(query => matchMedia(query));
 
-    const getValues = () => mediaQueryLists.map(list => list.matches);
+    const getValues = (): boolean[] => mediaQueryLists.map(list => list.matches);
 
-    const [values, setValues] = useState(getValues);
+    const [values, setValues] = useState<boolean[]>(getValues);
 
     useEffect(() => {
         const handler = () => setValues(getValues);

@@ -10,7 +10,12 @@
     left: 0;
     width: 100vw;
 
-    background-color: getColor('background');
+    // background-color: getColor('background');
+    background-color: transparent; 
+
+    @include respond-mob-minMax {
+        margin-top: 3px;
+    }    
 
     @include respond-to('tablet') {
         padding-top: 11px;

@@ -15,7 +15,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     handleBlur: () => void;
     onChange: () => void;
     ariaLabel?: string;
-    ariaInvalid?: string;
+    ariaInvalid?: boolean;
     ariaDescribedby?: string;
     required: boolean;
 }

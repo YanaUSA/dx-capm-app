@@ -8,6 +8,7 @@ const Icon: React.FC<IconProps> = ({
     stroke,
     fill,
     className,
+    ariaLabel,
 }) => {
     const iconLink = `${icons}#${name}`;
 
@@ -19,6 +20,7 @@ const Icon: React.FC<IconProps> = ({
             height={heightSize}
             stroke={stroke}
             fill={fill}
+            aria-label={ariaLabel}
         >
             <use href={iconLink}></use>
         </svg>

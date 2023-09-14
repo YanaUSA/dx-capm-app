@@ -3,36 +3,36 @@ $tablet-width: 744px;
 $desktop-width: 1440px;
 
 $breakpoints: (
-  "mobile": (
-    min-width: #{$mobile-width},
-  ),
-  "tablet": (
-    min-width: #{$tablet-width},
-  ),
-  "desktop": (
-    min-width: #{$desktop-width},
-  ),
+    'mobile': (
+        min-width: #{$mobile-width},
+    ),
+    'tablet': (
+        min-width: #{$tablet-width},
+    ),
+    'desktop': (
+        min-width: #{$desktop-width},
+    ),
 ) !default;
 
 @mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media #{inspect(map-get($breakpoints, $breakpoint))} {
-      @content;
-    }
-  } @else {
-    @warn "Unfortunately, no value could be retrieved from #{$breakpoint}. "
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from #{$breakpoint}. "
         + "Available breakpoints are: #{map-keys($breakpoints)}.";
-  }
+    }
 }
 
 @mixin respond-mob-minMax {
-  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
-    @content;
-  }
+    @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
+        @content;
+    }
 }
 
 @mixin respond-tab-minMax {
-  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
-    @content;
-  }
+    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
 }

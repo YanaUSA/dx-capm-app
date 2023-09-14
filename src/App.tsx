@@ -9,8 +9,6 @@ import NotFoundPage from "@pages/NotFoundPage/NotFoundPage";
 
 import "./App.scss";
 
-
-
 const App = () => {
   return (
       <Routes>
