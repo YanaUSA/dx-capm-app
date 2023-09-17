@@ -22,23 +22,23 @@ body {
 
     // Tab background-img 1x, 2x
 
-    @include respond-to('tablet') {
-        @include retina-background-image(
-            './assets/images/technology_background_tab',
-            'jpg',
-            100%,
-            100%
-        );
-    }
+    // @include respond-to('tablet') {
+    //     @include retina-background-image(
+    //         './assets/images/technology_background_tab',
+    //         'jpg',
+    //         100%,
+    //         100%
+    //     );
+    // }
 
-    // PC background-img 1x, 2x
+    // // PC background-img 1x, 2x
 
-    @include respond-to('desktop') {
-        @include retina-background-image(
-            './assets/images/technology_background_pc',
-            'jpg',
-            100%,
-            100%
-        );
-    }
+    // @include respond-to('desktop') {
+    //     @include retina-background-image(
+    //         './assets/images/technology_background_pc',
+    //         'jpg',
+    //         100%,
+    //         100%
+    //     );
+    // }
 }

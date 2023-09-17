@@ -7,7 +7,7 @@ import styles from './Header.module.scss';
 const Header: React.FC = () => {
     const clientSite = 'https://dexola.com/';
     return (
-        <div className={styles.header}>
+        <header className={styles.header}>
             <div className={styles.headerBox}>
                 <Link
                     to={clientSite}
@@ -26,7 +26,7 @@ const Header: React.FC = () => {
                     Connect wallet
                 </Button>
             </div>
-        </div>
+        </header>
     );
 };
 

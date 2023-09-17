@@ -2,3 +2,28 @@
 @import "@styles/theme-colors.module.scss";
 @import "@styles/fonts.module.scss";
 @import "@styles/mixins.module.scss";
+
+.navContainer {
+
+    background-color: getColor('background');
+    // background-color: red;
+    border-bottom: 1px solid;
+    // border-color: getColor('accent-blue');
+}
+
+.navigation {
+    // display: flex;
+    // justify-content: space-between;
+
+    // margin: 0 auto;
+    // padding: 0 24px;
+
+    @include respond-to('tablet') {
+        // padding: 0 48px;
+    }
+
+    @include respond-to('desktop') {
+        // padding: 0 120px;
+        // width: 1440px;
+    }
+}

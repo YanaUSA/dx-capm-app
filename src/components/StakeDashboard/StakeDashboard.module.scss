@@ -19,7 +19,7 @@
 .infoList {
     display: flex;
     margin-top: 26px;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
 
     @include respond-to('tablet') {
         margin-top: 16px;
