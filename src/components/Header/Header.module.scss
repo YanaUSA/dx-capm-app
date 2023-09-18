@@ -4,13 +4,17 @@
 @import '@styles/mixins.module.scss';
 
 .header {
-    position: fixed;
-    z-index: 99;
-    top: 0;
-    left: 0;
-    width: 100vw;
+    // position: fixed;
+    // z-index: 99;
+    // top: 0;
+    // left: 0;
+    // width: 100vw;
+/////////////////
 
-    // background-color: transparent; 
+
+
+
+
 
     @include respond-mob-minMax {
         margin-top: 3px;
@@ -27,7 +31,7 @@
     justify-content: space-between;
 
     margin: 0 auto;
-    padding: 0 24px;
+    // padding: 0 24px;
 
     @include respond-to('tablet') {
         padding: 0 48px;

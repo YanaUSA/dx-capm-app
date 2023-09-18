@@ -5,12 +5,42 @@
 
 // --- common margin styles --- //
 
-.container {
+.mainWrapper {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    // Tab background-img 1x, 2x
+
+    @include respond-to('tablet') {
+        @include retina-background-image(
+            '/src/assets/images/technology_background_tab',
+            'jpg',
+            100%,
+            100%
+        );
+    }
+
+    // PC background-img 1x, 2x
+
+    @include respond-to('desktop') {
+        @include retina-background-image(
+            '/src/assets/images/technology_background_pc',
+            'jpg',
+            100%,
+            100%
+        );
+    }
+}
+
+.mainContainer {
     margin: 0 auto;
     padding: 0 24px;
     background-color: getColor('background');
-    // background-color: #fff;
-    border-radius: 16px 16px 0 0;
+
+    @include respond-mob-minMax {
+        border-radius: 16px 16px 0 0;
+    }
 
     @include respond-to('tablet') {
         padding: 0 48px;
@@ -23,14 +53,12 @@
 }
 
 main {
-
-
+    position: relative;
     background-color: getColor('background');
-    // margin-top: 200px;
 
-    // @include respond-to("tablet") {
-    //   margin-top: 70px;
-    // }
+    overflow: scroll;
+    margin-bottom: 42px;
+
 }
 
 // --- common text styles --- //
@@ -52,7 +80,7 @@ h1 {
 
 h2 {
     font-family: $kanit;
-    font-size: getFontSize('s-medium');
+    font-size: getFontSize('xs-medium');
     font-weight: 500;
     line-height: 1.5;
 

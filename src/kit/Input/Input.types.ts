@@ -12,10 +12,10 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     labelTextStyle?: string;
     inputStyle?: string;
     inputError?: string;
-    handleBlur: () => void;
-    onChange: () => void;
+    handleBlur?: () => void;
+    onChange?: () => void;
     ariaLabel?: string;
     ariaInvalid?: boolean;
     ariaDescribedby?: string;
-    required: boolean;
+    required?: boolean;
 }

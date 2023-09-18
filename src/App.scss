@@ -8,6 +8,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 100%;
 
     // Mobile background-img 1x, 2x
 
@@ -19,26 +20,4 @@ body {
             100%
         );
     }
-
-    // Tab background-img 1x, 2x
-
-    // @include respond-to('tablet') {
-    //     @include retina-background-image(
-    //         './assets/images/technology_background_tab',
-    //         'jpg',
-    //         100%,
-    //         100%
-    //     );
-    // }
-
-    // // PC background-img 1x, 2x
-
-    // @include respond-to('desktop') {
-    //     @include retina-background-image(
-    //         './assets/images/technology_background_pc',
-    //         'jpg',
-    //         100%,
-    //         100%
-    //     );
-    // }
 }

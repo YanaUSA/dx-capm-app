@@ -18,10 +18,9 @@ const Login = () => {
             <Button
                 className={styles.loginBtn}
                 type="submit"
+                buttonText="Connect wallet"
                 ariaLabel="Connect wallet"
-            >
-                Connect wallet
-            </Button>
+            />
         </div>
     );
 };

@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: auto;
 
     @include respond-to('tablet') {
         border: 1px solid getColor('accent-blue');

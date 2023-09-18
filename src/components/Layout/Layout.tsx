@@ -23,15 +23,17 @@ import styles from './Layout.module.scss';
 const Layout: React.FC = () => {
     return (
         <>
-            <AppBar />
-            <div className={styles.container}>
-            <Navigation />
-                <Suspense fallback={null}>
-                    <main>
-                        <Outlet />
-                    </main>
-                </Suspense>
-                <Footer />
+            <div className={styles.mainWrapper}>
+                <AppBar /></div>
+                <div className={styles.mainContainer}>
+                    <Navigation />
+                    <Suspense fallback={null}>
+                        <main>
+                            <Outlet />
+                        </main>
+                    </Suspense>
+                    <Footer />
+                
             </div>
         </>
     );

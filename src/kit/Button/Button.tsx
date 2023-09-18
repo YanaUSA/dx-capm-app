@@ -5,6 +5,7 @@ import styles from './Button.module.scss';
 const Button: React.FC<ButtonProps> = ({
     type,
     value,
+    buttonText,
     disabled = false,
     onClick,
     children,
@@ -20,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
             className={`${styles.button} ${className}`}
             aria-label={ariaLabel}
         >
-            {children}
+            {buttonText || children}
         </button>
     );
 };

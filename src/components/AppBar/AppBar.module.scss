@@ -3,52 +3,10 @@
 @import '@styles/fonts.module.scss';
 @import '@styles/mixins.module.scss';
 
-.headerWrapper {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.appBarContainer {
 
-    // background-color: blue;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // right: 0;
 
-    // Mobile background-img 1x, 2x
-
-    // @include respond-mob-minMax {
-    //     @include retina-background-image(
-    //         '/src/assets/images/technology_background_mob',
-    //         'jpg',
-    //         100%,
-    //         100%
-    //     );
-    // }
-
-    // Tab background-img 1x, 2x
-
-    @include respond-to('tablet') {
-        @include retina-background-image(
-            '/src/assets/images/technology_background_tab',
-            'jpg',
-            100%,
-            100%
-        );
-    }
-
-    // PC background-img 1x, 2x
-
-    @include respond-to('desktop') {
-        @include retina-background-image(
-            '/src/assets/images/technology_background_pc',
-            'jpg',
-            100%,
-            100%
-        );
-    }
-}
-
-.headerContainer {
+//////////////////////
     margin: 0 auto;
     padding: 0 24px;
 
