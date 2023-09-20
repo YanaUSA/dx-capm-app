@@ -1,0 +1,44 @@
+@import '@styles/breakpoints.module.scss';
+@import '@styles/theme-colors.module.scss';
+@import '@styles/fonts.module.scss';
+@import '@styles/mixins.module.scss';
+
+.accountContainer {
+ display: flex;
+}
+
+.contentBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.accItem {
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  // margin-right: 8px;
+
+  font-family: $kanit;
+  font-size: getFontSize('m-small');
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+
+}
+
+
+
+
+
+// .balance {
+//   margin-right: 30px;
+// }

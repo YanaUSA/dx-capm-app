@@ -8,20 +8,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    padding: 56px 0;
 
     @include respond-to('tablet') {
         border: 1px solid getColor('accent-blue');
+        padding: 63px 0;
     }
 }
 
 .titleContainer {
-    text-align: center;
-    margin-top: 150px;
-    margin-bottom: 110px;
+    text-align: center;   
+    margin-bottom: 110px; 
 
     @include respond-to('tablet') {
-        margin-top: 63px;
         margin-bottom: 32px;
     }
 }
@@ -40,13 +39,13 @@
 }
 
 .loginBtn {
-    margin-bottom: 56px;
+    align-self: center;
+
+    &:not(:last-child) {
+        margin-bottom: 16px;
+    }
 
     @include respond-mob-minMax {
-        width: 100%;
     }
 
-    @include respond-to('tablet') {
-        margin-bottom: 62px;
-    }
 }
