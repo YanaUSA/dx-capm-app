@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom';
-import {
-    useAccount,
-    // useConnect,
-    // useDisconnect,
-    // useEnsAvatar,
-    // useEnsName,
-} from 'wagmi';
+import { useAccount, useConnect, useBalance } from 'wagmi';
+
+import type { Address } from 'wagmi'
 
 import Button from '@kit/Button/Button';
 import Icon from '@kit/Icon/Icon';
@@ -16,7 +12,26 @@ import Account from '../Account/Account';
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
-    const { connector: activeConnector, isConnected } = useAccount();
+    const { address, isConnected } = useAccount();
+    const { connect, connectors, error, pendingConnector } =
+        useConnect();
+
+    const { data, isError, isLoading } = useBalance({
+        address: address as Address,
+    });
+
+    const mainConnector = connectors.find(
+        connector => connector.id === 'metaMask'
+    );
+
+    console.log('data', data)
+
+    console.log('typeof-address', typeof address)
+
+    console.log('typeof-data', typeof data?.formatted)
+
+    if (isLoading) return <div>Fetching balance…</div>;
+    if (isError) return <div>Error fetching balance</div>;
 
     return (
         <header className={styles.header}>
@@ -31,20 +46,43 @@ const Header: React.FC = () => {
                 </Link>
 
                 {isConnected ? (
+                    <div>
+                    Balance: {data?.formatted} {data?.symbol}
+
+                
                     <Account
-                        currentAccount={
-                            '0x3159515F1dFc44C8fc9db8107290a4EA657E2547'
-                        }
+                    currentAccount={address}
+                        // currentAccount={
+                        //     '0x3159515F1dFc44C8fc9db8107290a4EA657E2547'
+                        // }
                         tokenAmount={'345'}
-                        gasBalance={'4.5111111554202'}
-                    />
+                        // gasBalance={'4.5111111554202'}
+                        ethBalance={data?.formatted}
+                    /></div>
                 ) : (
-                    <Button
-                        className={styles.headerBtn}
-                        type="submit"
-                        buttonText="Connect wallet"
-                        ariaLabel="Connect wallet"
-                    />
+                    <div>
+                        {/* {connectors.map(
+                            connector =>
+                                connector === mainConnector && (
+                                    <Button
+                                        className={styles.headerBtn}
+                                        type="submit"
+                                        disabled={!connector.ready}
+                                        key={connector.id}
+                                        onClick={() => connect({ connector })}
+                                        // buttonText="Connect wallet"
+                                        ariaLabel={`Connect wallet via ${connector.name}`}
+                                    >
+                                        {connector.name}
+                                        {!connector.ready && ' (unsupported)'}
+                                        {isLoading &&
+                                            pendingConnector?.id ===
+                                                connector.id &&
+                                            ' (connecting)'}
+                                    </Button>
+                                )
+                        )} */}
+                    </div>
                 )}
             </div>
         </header>

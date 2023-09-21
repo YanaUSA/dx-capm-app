@@ -1,25 +1,18 @@
 import {
     useAccount,
     useConnect,
-    // useDisconnect,
-    useEnsAvatar,
-    useEnsName,
+    useBalance,
 } from 'wagmi';
 
 import Button from '@kit/Button/Button';
-import Icon from '../../kit/Icon/Icon';
+import Icon from '@kit/Icon/Icon';
 
 import styles from './Login.module.scss';
 
 const Login = () => {
-    const { address, connector, isConnected } = useAccount()
-    const { data: ensAvatar } = useEnsAvatar({ address })
-    const { data: ensName } = useEnsName({ address })
+    // const { address, connector, isConnected } = useAccount()
     const { connect, connectors, error, isLoading, pendingConnector } =
       useConnect()
-
-        // console.log("activeConnector", activeConnector)
-
 
     return (
         <div className={styles.loginPageContainer}>
@@ -43,7 +36,7 @@ const Login = () => {
                     onClick={() => connect({ connector })}
                     type="submit"
                     // buttonText="Connect wallet"
-                    ariaLabel="Connect wallet"
+                    ariaLabel={`Connect wallet via ${connector.name}`}
                 >
                     {connector.name}
                     {!connector.ready && ' (unsupported)'}
