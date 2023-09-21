@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { PATHS } from '@constants/path';
+// import { useAccount } from 'wagmi';
 
 import styles from './Navigation.module.scss';
+
 
 const navigation = [
     { id: 1, name: 'Stake', to: PATHS.STAKE },
@@ -11,10 +13,11 @@ const navigation = [
 ];
 
 const Navigation = () => {
+    // const { isConnected } = useAccount();
+
     return (
       <div className={styles.navContainer}>
         <nav className={styles.navigation}>
-            
 
             {/* {isLoggedIn && ( */}
             {/* <NavLink to="/">Home</NavLink>
@@ -23,10 +26,10 @@ const Navigation = () => {
             <NavLink to="/rewards">Claim rewards</NavLink> */}
             {/* )} */}
 
-            <ul>
+            <ul className={styles.navLinkList}>
                 {navigation.map(({ id, name, to }) => (
-                    <li className={styles.navItem} key={id}>
-                        <NavLink to={to}>{name}</NavLink>
+                    <li key={id} className={styles.navItem}>
+                        <NavLink to={to} className={styles.navItemLink}>{name}</NavLink>
                     </li>
                 ))}
             </ul>

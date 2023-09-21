@@ -1,23 +1,15 @@
-@import "@styles/breakpoints.module.scss";
-@import "@styles/theme-colors.module.scss";
-@import "@styles/fonts.module.scss";
-@import "@styles/mixins.module.scss";
+@import '@styles/breakpoints.module.scss';
+@import '@styles/theme-colors.module.scss';
+@import '@styles/fonts.module.scss';
+@import '@styles/mixins.module.scss';
 
 .navContainer {
-
     background-color: getColor('background');
-    // background-color: red;
     border-bottom: 1px solid;
-    // border-color: getColor('accent-blue');
+    border-color: getColor('accent-blue');
 }
 
 .navigation {
-    // display: flex;
-    // justify-content: space-between;
-
-    // margin: 0 auto;
-    // padding: 0 24px;
-
     @include respond-to('tablet') {
         // padding: 0 48px;
     }
@@ -27,3 +19,51 @@
         // width: 1440px;
     }
 }
+
+.navLinkList {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+
+    font-size: getFontSize('m-small');
+    line-height: 1.3;
+    color: getColor('light-grey');
+
+    @include respond-to('tablet') {
+        justify-content: start;
+        // padding: 16px 32px;
+    }
+}
+
+.navItem {
+    position: relative;
+    padding: 16px 0;
+
+    @include respond-to('tablet') {
+        padding: 16px 32px;
+    }
+}
+
+.navItemLink {
+    padding: 16px 0;
+
+    &:active {
+        color: getColor('white');
+
+        &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 6px;
+                background: getColor('accent-blue');
+            }
+    }
+
+    &:hover,
+    &:focus {
+        color: getColor('white');
+    }
+}
+

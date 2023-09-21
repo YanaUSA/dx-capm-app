@@ -39,6 +39,7 @@
     background-color: getColor('background');
 
     @include respond-mob-minMax {
+        padding-top: 16px;
         border-radius: 16px 16px 0 0;
     }
 
@@ -53,12 +54,15 @@
 }
 
 main {
-    position: relative;
-    background-color: getColor('background');
-
+    position: relative;   
     overflow: auto;
     margin-bottom: 42px;
 
+    // @include respond-mob-minMax {
+        
+    // }
+
+ background-color: getColor('background');
 }
 
 // --- common text styles --- //

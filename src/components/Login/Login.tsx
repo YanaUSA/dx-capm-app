@@ -18,7 +18,7 @@ const Login = () => {
     const { connect, connectors, error, isLoading, pendingConnector } =
       useConnect()
 
-        console.log("activeConnector", activeConnector)
+        // console.log("activeConnector", activeConnector)
 
 
     return (
@@ -34,7 +34,8 @@ const Login = () => {
                     To start staking you need to connect you wallet first
                 </h2>
             </div>
-            {connectors.map(connector => (
+            <div  className={styles.loginBtnWrapper}>
+                {connectors.map(connector => (
                 <Button
                     className={styles.loginBtn}
                     disabled={!connector.ready}
@@ -51,6 +52,7 @@ const Login = () => {
                         ' (connecting)'}
                 </Button>
             ))}
+            </div>            
             {error && <div>{error.message}</div>}
         </div>
     );

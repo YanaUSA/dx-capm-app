@@ -17,8 +17,8 @@
 }
 
 .titleContainer {
-    text-align: center;   
-    margin-bottom: 110px; 
+    text-align: center;
+    margin-bottom: 110px;
 
     @include respond-to('tablet') {
         margin-bottom: 32px;
@@ -38,14 +38,29 @@
     padding-right: 45px;
 }
 
+.loginBtnWrapper {
+    @include respond-to('desktop') {
+        display: flex;
+        justify-content: space-between;
+         width: fit-content;
+    }
+}
+
 .loginBtn {
     align-self: center;
+    width: 100%;
+    white-space: nowrap;
 
     &:not(:last-child) {
         margin-bottom: 16px;
     }
 
-    @include respond-mob-minMax {
-    }
+    @include respond-to('desktop') {
+        width: 100%;
 
+        &:not(:last-child) {
+            margin-right: 20px;
+            margin-bottom: 0;
+        }
+    }
 }
