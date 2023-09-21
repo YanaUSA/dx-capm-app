@@ -1,8 +1,10 @@
-
+import { NavLink } from "react-router-dom";
 import { useAccount } from "wagmi";
 
 import Login from "@/components/Login/Login";
-import { NavLink } from "react-router-dom";
+import Stake from "@/components/Stake/Stake";
+
+
 
 import {PATHS} from '@constants/path'
 
@@ -13,7 +15,9 @@ const LoginPage = () => {
     
     return (
         <>
-        {isConnected ? <NavLink to={PATHS.STAKE}/> : <Login/>}
+        {/* {!isConnected ? <Login/> : <Stake/>} */}
+        
+        {/* {!isConnected ? <Login/> : <NavLink to={PATHS.STAKE}/>} */}
             
         </>
     );
