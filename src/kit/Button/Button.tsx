@@ -4,6 +4,7 @@ import styles from './Button.module.scss';
 
 const Button: React.FC<ButtonProps> = ({
     type,
+    id,
     value,
     buttonText,
     disabled = false,
@@ -14,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
     return (
         <button
+            id={id}
             type={type}
             value={value}
             disabled={disabled}

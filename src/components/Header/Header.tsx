@@ -24,11 +24,11 @@ const Header: React.FC = () => {
         connector => connector.id === 'metaMask'
     );
 
-    console.log('data', data)
+    // console.log('data', data)
 
-    console.log('typeof-address', typeof address)
+    // console.log('typeof-address', typeof address)
 
-    console.log('typeof-data', typeof data?.formatted)
+    // console.log('typeof-data', typeof data?.formatted)
 
     if (isLoading) return <div>Fetching balance…</div>;
     if (isError) return <div>Error fetching balance</div>;
@@ -47,7 +47,7 @@ const Header: React.FC = () => {
 
                 {isConnected ? (
                     <div>
-                    Balance: {data?.formatted} {data?.symbol}
+                    {/* Balance: {data?.formatted} {data?.symbol} */}
 
                 
                     <Account
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
                     /></div>
                 ) : (
                     <div>
-                        {/* {connectors.map(
+                        {connectors.map(
                             connector =>
                                 connector === mainConnector && (
                                     <Button
@@ -81,7 +81,7 @@ const Header: React.FC = () => {
                                             ' (connecting)'}
                                     </Button>
                                 )
-                        )} */}
+                        )}
                     </div>
                 )}
             </div>

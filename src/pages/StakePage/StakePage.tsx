@@ -1,6 +1,6 @@
 import Stake from '@components/Stake/Stake'
 
-const StakePage = () => {
+const StakePage: React.FC = () => {
     return (
       <>
        <Stake/>

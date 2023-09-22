@@ -10,18 +10,19 @@ const navigation = [
     { id: 3, name: 'Claim rewards', to: PATHS.REWARDS },
 ];
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
     const { isConnected } = useAccount();
 
     return (
         <div className={styles.navContainer}>
-            <nav className={styles.navigation}>
+            <nav className={styles.navigation} aria-label="Navigation panel">
                 <ul className={styles.navLinkList}>
                     {navigation.map(({ id, name, to }) => (
                         <li key={id} className={styles.navItem}>
                             <NavLink
                                 to={isConnected ? `${to}` : '/'}
                                 className={styles.navItemLink}
+                                aria-label={`Navigate to ${name}`}
                             >
                                 {name}
                             </NavLink>

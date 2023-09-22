@@ -1,8 +1,10 @@
-const WithdrawPage = () => {
+import Withdraw from "@/components/Withdraw/Withdraw";
+
+const WithdrawPage: React.FC = () => {
     return (
-      <div>
-        <h2>WithdrawPage</h2>
-      </div>
+      <>
+        <Withdraw/>
+      </>
     );
   };
   

@@ -9,7 +9,7 @@ import Icon from '@kit/Icon/Icon';
 
 import styles from './Login.module.scss';
 
-const Login = () => {
+const Login: React.FC = () => {
     // const { address, connector, isConnected } = useAccount()
     const { connect, connectors, error, isLoading, pendingConnector } =
       useConnect()
@@ -22,8 +22,9 @@ const Login = () => {
                     widthSize="96"
                     heightSize="96"
                     className={styles.walletIcon}
+                    ariaLabel="Wallet icon"
                 />
-                <h2 className={styles.loginPageTitle}>
+                <h2 className={styles.loginPageTitle} aria-label="Page title description">
                     To start staking you need to connect you wallet first
                 </h2>
             </div>
@@ -46,7 +47,7 @@ const Login = () => {
                 </Button>
             ))}
             </div>            
-            {error && <div>{error.message}</div>}
+            {error && <div aria-label="Error message">{error.message}</div>}
         </div>
     );
 };

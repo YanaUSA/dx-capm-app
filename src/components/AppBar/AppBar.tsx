@@ -3,7 +3,7 @@ import StakeDashboard from '../StakeDashboard/StakeDashboard';
 
 import styles from './AppBar.module.scss';
 
-const AppBar = () => {
+const AppBar: React.FC = () => {
     return (
         <>
             <div className={styles.appBarContainer}>

@@ -1,8 +1,10 @@
-const RewardsPage = () => {
+import ClaimRewards from "@/components/ClaimRewards/ClaimRewards";
+
+const RewardsPage: React.FC = () => {
     return (
-      <div>
-        <h2>RewardsPage</h2>
-      </div>
+      <>
+        <ClaimRewards/>
+      </>
     );
   };
   

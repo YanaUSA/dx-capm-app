@@ -29,8 +29,8 @@ const Account: React.FC<AccountProps> = props => {
                     alt={`${tokenName} avatar`}
                     width={isMobile ? '24' : '32'}
                 />
-                <div className={styles.accItem}>{props.tokenAmount}</div>
-                <span className={styles.accItem}>{tokenName}</span>
+                <div className={styles.accItem} aria-label="Amount of tokens">{props.tokenAmount}</div>
+                <span className={styles.accItem} aria-label="Token name">{tokenName}</span>
             </div>
 
             <div className={styles.contentBox}>
@@ -41,12 +41,12 @@ const Account: React.FC<AccountProps> = props => {
                     heightSize={isMobile ? '24' : '32'}
                     ariaLabel={`${gasTokenName} avatar`}
                 />
-                <div className={styles.accItem}>{formattedEthBalance}</div>
-                <span className={styles.accItem}>{gasTokenName}</span>
+                <div className={styles.accItem} aria-label="Amount of tokens">{formattedEthBalance}</div>
+                <span className={styles.accItem} aria-label="Token name">{gasTokenName}</span>
                 {(isTablet || isDesktop) && (
                     <div className={styles.contentBox}>
                         <span className={styles.accItem}>|</span>
-                        <span className={styles.accItem}>{formattedAcc}</span>
+                        <span className={styles.accItem} aria-label="Wallet account">{formattedAcc}</span>
                     </div>
                 )}
             </div>

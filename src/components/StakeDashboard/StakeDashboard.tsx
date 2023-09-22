@@ -5,7 +5,7 @@ import useMatchMedia from '@hooks/useMatchMedia';
 
 import styles from './StakeDashboard.module.scss';
 
-const StakeDashboard = () => {
+const StakeDashboard: React.FC = () => {
     const { isMobile, isTablet } = useMatchMedia();
 
     return (

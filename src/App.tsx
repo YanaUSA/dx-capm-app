@@ -11,7 +11,7 @@ import NotFoundPage from '@pages/NotFoundPage/NotFoundPage';
 
 import './App.scss';
 
-const App = () => {
+const App: React.FC = () => {
     return (
         <WagmiConfig config={config}>
             <Routes>
