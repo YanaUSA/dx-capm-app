@@ -1,37 +1,43 @@
 import { Link } from 'react-router-dom';
-import { useAccount, useConnect, useBalance } from 'wagmi';
+import { useAccount, useConnect, useBalance, useContractRead } from 'wagmi';
 
-import type { Address } from 'wagmi'
+// import type { Address } from 'wagmi';
 
 import Button from '@kit/Button/Button';
 import Icon from '@kit/Icon/Icon';
 import { clientSite } from '@constants/constants';
 
-import Account from '../Account/Account';
+import userAbi from '@contracts/userAbi.json';
+
+import Account from '@components/Account/Account';
 
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
-    const { address, isConnected } = useAccount();
-    const { connect, connectors, error, pendingConnector } =
-        useConnect();
+    const { connect, connectors, error, pendingConnector } = useConnect();
 
-    const { data, isError, isLoading } = useBalance({
-        address: address as Address,
+    const { address, isConnecting, isConnected, isDisconnected } = useAccount();
+
+    const userBalance = useBalance({
+        address: address,
     });
+
+    const balanceData = userBalance.data;
+    const balanceIsError = userBalance.isError;
+    const balanceIsLoading = userBalance.isLoading;
 
     const mainConnector = connectors.find(
         connector => connector.id === 'metaMask'
     );
 
-    // console.log('data', data)
+    const { data, isError, isLoading } = useContractRead({
+        address: '0x59Ec26901B19fDE7a96f6f7f328f12d8f682CB83',
+        abi: userAbi,
+        functionName: 'balanceOf',
+        args: [address],
+    });
 
-    // console.log('typeof-address', typeof address)
-
-    // console.log('typeof-data', typeof data?.formatted)
-
-    if (isLoading) return <div>Fetching balance…</div>;
-    if (isError) return <div>Error fetching balance</div>;
+    console.log('data in header', typeof data);
 
     return (
         <header className={styles.header}>
@@ -47,18 +53,12 @@ const Header: React.FC = () => {
 
                 {isConnected ? (
                     <div>
-                    {/* Balance: {data?.formatted} {data?.symbol} */}
-
-                
-                    <Account
-                    currentAccount={address}
-                        // currentAccount={
-                        //     '0x3159515F1dFc44C8fc9db8107290a4EA657E2547'
-                        // }
-                        tokenAmount={'345'}
-                        // gasBalance={'4.5111111554202'}
-                        ethBalance={data?.formatted}
-                    /></div>
+                        <Account
+                            currentAccount={address}
+                            tokenAmount={data}
+                            ethBalance={balanceData?.formatted}
+                        />
+                    </div>
                 ) : (
                     <div>
                         {connectors.map(

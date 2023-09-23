@@ -32,7 +32,7 @@ export const config = createConfig({
             options: {
                 appName: 'wagmi',
                 jsonRpcUrl: '78883284975d449c8ffa7190650f6b71',
-                // jsonRpcUrl: process.env.COINBASE_JSON_RPC_URL,
+                // jsonRpcUrl: `${process.env.COINBASE_JSON_RPC_URL}`,
             },
         }),
         new WalletConnectConnector({

@@ -1,10 +1,6 @@
-import { useAccount, useBalance } from 'wagmi';
-
 import Icon from '@kit/Icon/Icon';
-
-import useMatchMedia from '@hooks/useMatchMedia';
-
 import { tokenName, gasTokenName } from '@constants/constants';
+import useMatchMedia from '@hooks/useMatchMedia';
 import tokenAvatar from '@assets/images/STRU.png';
 
 import { AccountProps } from './Account.types';
@@ -16,9 +12,8 @@ const Account: React.FC<AccountProps> = props => {
     const acc = props.currentAccount;
     const formattedAcc = `${acc.slice(0, 16)}...`;
 
-    // const formattedTokenBalance = Number(props.tokenAmount).toFixed(2);
+    const formattedTokenBalance = Number(props.tokenAmount).toFixed(4);
     const formattedEthBalance = Number(props.ethBalance).toFixed(3);
-
 
     return (
         <div className={styles.accountContainer}>
@@ -29,8 +24,12 @@ const Account: React.FC<AccountProps> = props => {
                     alt={`${tokenName} avatar`}
                     width={isMobile ? '24' : '32'}
                 />
-                <div className={styles.accItem} aria-label="Amount of tokens">{props.tokenAmount}</div>
-                <span className={styles.accItem} aria-label="Token name">{tokenName}</span>
+                <div className={styles.accItem} aria-label="Amount of tokens">
+                    {formattedTokenBalance}
+                </div>
+                <span className={styles.accItem} aria-label="Token name">
+                    {tokenName}
+                </span>
             </div>
 
             <div className={styles.contentBox}>
@@ -41,17 +40,24 @@ const Account: React.FC<AccountProps> = props => {
                     heightSize={isMobile ? '24' : '32'}
                     ariaLabel={`${gasTokenName} avatar`}
                 />
-                <div className={styles.accItem} aria-label="Amount of tokens">{formattedEthBalance}</div>
-                <span className={styles.accItem} aria-label="Token name">{gasTokenName}</span>
+                <div className={styles.accItem} aria-label="Amount of tokens">
+                    {formattedEthBalance}
+                </div>
+                <span className={styles.accItem} aria-label="Token name">
+                    {gasTokenName}
+                </span>
                 {(isTablet || isDesktop) && (
                     <div className={styles.contentBox}>
                         <span className={styles.accItem}>|</span>
-                        <span className={styles.accItem} aria-label="Wallet account">{formattedAcc}</span>
+                        <span
+                            className={styles.accItem}
+                            aria-label="Wallet account"
+                        >
+                            {formattedAcc}
+                        </span>
                     </div>
                 )}
             </div>
-
-            {/* <button onClick={disconnect}>Disconnect</button> */}
         </div>
     );
 };

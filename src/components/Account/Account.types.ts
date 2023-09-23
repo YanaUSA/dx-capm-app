@@ -1,6 +1,6 @@
 
 export interface AccountProps {
-    currentAccount: string;
-    tokenAmount: string;
-    ethBalance: string;
+    currentAccount: string | undefined;
+    tokenAmount: bigint;
+    ethBalance: string | undefined;
 }
