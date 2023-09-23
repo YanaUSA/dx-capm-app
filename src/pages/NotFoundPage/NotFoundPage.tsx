@@ -4,7 +4,7 @@ import styles from './NotFoundPage.module.scss';
 const NotFoundPage: React.FC = () => {
   return (
     <div className={styles. errorContainer}>
-      <img src={image} alt="error 404" style={{ borderRadius: '5px' }} />
+      <img src={image} alt="error 404" style={{ borderRadius: '5px', width: '100%',  height: '100%'}} />
     </div>
   );
 };

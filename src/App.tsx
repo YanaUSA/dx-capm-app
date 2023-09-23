@@ -19,9 +19,9 @@ const App: React.FC = () => {
                     <Route index element={<HomePage />} />
                     <Route path="/stake" element={<StakePage />} />
                     <Route path="/withdraw" element={<WithdrawPage />} />
-                    <Route path="/rewards" element={<RewardsPage />} />
-                    <Route path="*" element={<NotFoundPage />} />
+                    <Route path="/rewards" element={<RewardsPage />} />                    
                 </Route>
+                <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </WagmiConfig>
     );
