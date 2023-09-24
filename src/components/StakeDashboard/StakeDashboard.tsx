@@ -1,3 +1,8 @@
+import {
+    useAccount,
+    useContractRead,
+} from 'wagmi';
+import abi from '@contracts/abi.json';
 import ButtonIconWrapper from '@kit/ButtonIconWrapper/ButtonIconWrapper';
 import Icon from '@kit/Icon/Icon';
 import { tokenName } from '@constants/constants';
@@ -5,8 +10,40 @@ import useMatchMedia from '@hooks/useMatchMedia';
 
 import styles from './StakeDashboard.module.scss';
 
+const SECONDS_IN_DAY = 24 * 60 * 60;
+const WEI_NUMBER = 1000000000000000000;
+
+function weiToNumber(valueData: BigInt | number | {}): number {
+    const dataToNumber = Number(valueData);
+    return dataToNumber / WEI_NUMBER;
+
+    // const number = dataToNumber / WEI_NUMBER;
+    // return number;
+}
+
 const StakeDashboard: React.FC = () => {
     const { isMobile, isTablet } = useMatchMedia();
+    const { address, isConnecting, isDisconnected } = useAccount();
+
+//////-------STRU Staked Balance ------///////
+const { data, isError, isLoading, error } = useContractRead({
+    address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
+    abi: abi,
+    functionName: 'balanceOf',
+    args: [address],
+});
+
+let struToken = 0;
+if (data) {
+    struToken = weiToNumber(data).toFixed(2);
+} else {
+    console.log(error);
+}
+// console.log('isError', isError);
+// console.log('isLoading', isLoading);
+////////---end-----////
+
+
 
     return (
         <div className={styles.dashboard}>
@@ -36,7 +73,7 @@ const StakeDashboard: React.FC = () => {
                             //         : { marginRight: '8px' }
                             // }
                         >
-                            0.00
+                            {struToken}
                         </span>
                         <span
                             className={styles.itemValueDesc}

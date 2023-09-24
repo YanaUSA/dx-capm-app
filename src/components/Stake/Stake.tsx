@@ -1,5 +1,12 @@
 import { useState, ChangeEvent, MouseEvent } from 'react';
 
+import {
+    useContractWrite,
+    usePrepareContractWrite,
+    useWaitForTransaction,
+} from 'wagmi';
+import abi from '@contracts/abi.json';
+
 import Input from '@kit/Input/Input';
 import Button from '@kit/Button/Button';
 import Available from '../Available/Available';
@@ -9,10 +16,11 @@ import { tokenName } from '@constants/constants';
 import styles from './Stake.module.scss';
 import LoadingMessage from '../LoadingMessage/LoadingMessage';
 
-
 const Stake: React.FC = () => {
-    const [stake, setStake] = useState<string>('');
+    const [stake, setStake] = useState<number | string>();
     const [stakeError, setStakeError] = useState<string>('');
+
+    console.log('stake', stake);
 
     const tokenAmount = '354';
 
@@ -21,44 +29,62 @@ const Stake: React.FC = () => {
     const stakeAmount = '100';
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const value: string = e.target.value;
-
-        setStake(value);
-        validateStakeValue(stake);
+        setStake(e?.target.value);
+        // validateStakeValue(stake);
     };
 
     //------- validation part ----------------//
-    const validateStakeValue = (value: any) => {
-        // const stakeToNumber: number = Number(value);
+    // const validateStakeValue = (value: any) => {
+    //     // const stakeToNumber: number = Number(value);
 
-        if (value.trim() === '') {
-            setStakeError('This field can not be empty');
-        }
-        // else if (stakeToNumber === Math.round(stakeToNumber)) {
-        //     setStakeError('Please enter the round number for staking');
-        // } else {
-        setStakeError('');
-        // }
-        ///////////////////////////////////
-    };
+    //     if (value.trim() === '') {
+    //         setStakeError('This field can not be empty');
+    //     }
+    //     // else if (stakeToNumber === Math.round(stakeToNumber)) {
+    //     //     setStakeError('Please enter the round number for staking');
+    //     // } else {
+    //     setStakeError('');
+    //     // }
+    //     ///////////////////////////////////
+    // };
 
-    console.log('stakeError', stakeError);
+    function formatToWei(value: any) {
+        return value * 1000000000000000000;
+    }
 
-    const handleSubmit = (e) => {
+    const { data, isLoading, isSuccess, write } = useContractWrite({
+        address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
+        abi: abi,
+        functionName: 'stake',
+    });
+
+    const handleSubmit = e => {
         e.preventDefault();
+        const sendTokenStru = formatToWei(stake);
+        console.log('sendTokenStru', sendTokenStru);
 
-        // validateStakeValue(stake);
-
-        if (!stakeError) {
-            //     // Submit form and send validated data
-            console.log('SUCCESS!!!!!!!!!!!!!!!!!!');
-        }
-
-        console.log('stake:', stake);
+        write?.({ args: [sendTokenStru] });
+        console.log('stake send submit', stake);
 
         //--- input reset ---//
-        setStake('');
+        setStake("");
     };
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     // validateStakeValue(stake);
+
+    //     if (!stakeError) {
+    //         //     // Submit form and send validated data
+    //         console.log('SUCCESS!!!!!!!!!!!!!!!!!!');
+    //     }
+
+    //     console.log('stake:', stake);
+
+    //     //--- input reset ---//
+    //     setStake('');
+    // };
 
     return (
         <div className={styles.stakeContainer}>
@@ -97,7 +123,7 @@ const Stake: React.FC = () => {
 
             <Available tokenAmount={tokenAmount} />
 
-            <LoadingMessage stakeAmount={stakeAmount}/>
+            <LoadingMessage stakeAmount={stakeAmount} />
 
             <Button
                 id="stake"

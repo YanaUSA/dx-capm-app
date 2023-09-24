@@ -7,7 +7,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     type?: HTMLInputTypeAttribute;
     title?: string;
     disabled?: boolean;
-    value?: string;
+    value?: string | number | undefined;
     labelStyle?: string;
     labelTextStyle?: string;
     inputStyle?: string;
