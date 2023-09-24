@@ -4,42 +4,42 @@
 @import '@styles/mixins.module.scss';
 
 .header {
-    // position: fixed;
-    // z-index: 99;
-    // top: 0;
-    // left: 0;
-    // width: 100vw;
-/////////////////
+    width: 100%;
 
+    // margin: 0 auto;
+    padding: 0 24px;
 
-
-
-
+    display: flex;
+    justify-content: space-between;
 
     @include respond-mob-minMax {
         margin-top: 3px;
     }    
 
     @include respond-to('tablet') {
-        padding-top: 11px;
-        padding-bottom: 11px;
+        padding: 11px 48px;
+    }
+
+    @include respond-to('desktop') {
+        padding: 11px 40px;
+        // width: 1440px;
     }
 }
 
 .headerBox {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
 
-    margin: 0 auto;
+    // margin: 0 auto;
     // padding: 0 24px;
 
-    @include respond-to('tablet') {
-        padding: 0 48px;
-    }
+    // @include respond-to('tablet') {
+    //     // padding: 0 48px;
+    // }
 
-    @include respond-to('desktop') {
-        width: 1440px;
-    }
+    // @include respond-to('desktop') {
+    //     width: 1440px;
+    // }
 }
 
 .logoLink {

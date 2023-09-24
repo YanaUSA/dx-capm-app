@@ -24,16 +24,16 @@ const Layout: React.FC = () => {
     return (
         <>
             <div className={styles.mainWrapper}>
-                <AppBar /></div>
-                <div className={styles.mainContainer}>
-                    <Navigation />
-                    <Suspense fallback={null}>
-                        <main>
-                            <Outlet />
-                        </main>
-                    </Suspense>
-                    <Footer />
-                
+            <AppBar />
+            </div>
+            <div className={styles.mainContainer}>
+                <Navigation />
+                <Suspense fallback={null}>
+                    <main>
+                        <Outlet />
+                    </main>
+                </Suspense>
+                <Footer />
             </div>
         </>
     );

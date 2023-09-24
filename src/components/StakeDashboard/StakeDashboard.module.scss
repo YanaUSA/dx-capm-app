@@ -4,21 +4,27 @@
 @import '@styles/mixins.module.scss';
 
 .dashboard {
-    padding-top: 65px;
-    margin-bottom: 24px;
+    // padding-top: 22px;
+    padding: 22px 24px 24px;
+    // margin-bottom: 24px;
+    width: 100%;
 
     @include respond-to('tablet') {
-        padding-top: 102px;
+        // padding-top: 32px 24;  
+
+        padding: 32px 48px;
+
+        // width: 100%;
     }
 
     @include respond-to('desktop') {
-        padding-top: 94px;
+        padding: 24px 120px 48px;
     }
 }
 
 .infoList {
     display: flex;
-    margin-top: 26px;
+    // margin-top: 26px;
     // margin-bottom: 24px;
 
     @include respond-to('tablet') {

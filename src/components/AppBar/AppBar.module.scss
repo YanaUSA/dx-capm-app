@@ -4,18 +4,10 @@
 @import '@styles/mixins.module.scss';
 
 .appBarContainer {
-
-
-//////////////////////
     margin: 0 auto;
-    padding: 0 24px;
-
-    @include respond-to('tablet') {
-        padding: 0 48px;
-    }
+    width: 100vw;
 
     @include respond-to('desktop') {
         width: 1440px;
-        padding: 0 120px;
     }
 }

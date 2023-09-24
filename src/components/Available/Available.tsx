@@ -1,9 +1,11 @@
+import { useAccount, useContractRead } from 'wagmi';
 import { tokenName } from '@constants/constants';
+import userAbi from '@contracts/userAbi.json';
+
 import { AvailableProps } from './Available.types';
 
 import styles from './Available.module.scss';
-import { useAccount, useBalance, useContractRead } from 'wagmi';
-import userAbi from '@contracts/userAbi.json';
+
 
 const Available: React.FC<AvailableProps> = props => {
     const { address, isConnecting, isConnected } = useAccount();
@@ -15,6 +17,8 @@ const Available: React.FC<AvailableProps> = props => {
         args: [address],
     });
 
+    const formattedTokenBalance = Number(data) / 1000000000000000000;  
+
     return (
         <div className={styles.availableContainer}>
             <span className={styles.spanStyle}>Available:</span>
@@ -22,7 +26,7 @@ const Available: React.FC<AvailableProps> = props => {
                 className={styles.spanAmountStyle}
                 aria-label="Amount of available tokens on account"
             >
-                {data}
+                {formattedTokenBalance}
             </span>
             <span className={styles.spanDescription} aria-label="Token name">
                 {tokenName}

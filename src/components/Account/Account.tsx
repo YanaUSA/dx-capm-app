@@ -1,19 +1,36 @@
+import { useAccount, useConnect, useBalance, useContractRead } from 'wagmi';
 import Icon from '@kit/Icon/Icon';
 import { tokenName, gasTokenName } from '@constants/constants';
 import useMatchMedia from '@hooks/useMatchMedia';
 import tokenAvatar from '@assets/images/STRU.png';
+
+import userAbi from '@contracts/userAbi.json';
 
 import { AccountProps } from './Account.types';
 import styles from './Account.module.scss';
 
 const Account: React.FC<AccountProps> = props => {
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
+    const { address, isConnecting, isConnected, isDisconnected } = useAccount();
 
-    const acc = props.currentAccount;
-    const formattedAcc = `${acc.slice(0, 16)}...`;
+    const userBalance = useBalance({
+        address: address,
+    });
 
-    const formattedTokenBalance = Number(props.tokenAmount).toFixed(4);
-    const formattedEthBalance = Number(props.ethBalance).toFixed(3);
+    const balanceData = userBalance.data?.formatted;
+
+    console.log("balanceData", balanceData)
+
+    const { data, isError, isLoading } = useContractRead({
+        address: '0x59Ec26901B19fDE7a96f6f7f328f12d8f682CB83',
+        abi: userAbi,
+        functionName: 'balanceOf',
+        args: [address],
+    });
+
+    const formattedTokenBalance = Number(data) / 1000000000000000000;  
+    const formattedEthBalance = Number(balanceData).toFixed(4);
+    const formattedAcc = `${address?.slice(0, 16)}...`;
 
     return (
         <div className={styles.accountContainer}>

@@ -7,6 +7,7 @@ import Available from '../Available/Available';
 import { tokenName } from '@constants/constants';
 
 import styles from './Stake.module.scss';
+import LoadingMessage from '../LoadingMessage/LoadingMessage';
 
 
 const Stake: React.FC = () => {
@@ -16,6 +17,8 @@ const Stake: React.FC = () => {
     const tokenAmount = '354';
 
     const weeklyReward = '1';
+
+    const stakeAmount = '100';
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value: string = e.target.value;
@@ -93,6 +96,8 @@ const Stake: React.FC = () => {
             />
 
             <Available tokenAmount={tokenAmount} />
+
+            <LoadingMessage stakeAmount={stakeAmount}/>
 
             <Button
                 id="stake"

@@ -1,3 +1,3 @@
 export interface AvailableProps {
-    tokenAmount: bigint;
+    tokenAmount: string;
 }
