@@ -28,7 +28,7 @@ const StakeDashboard: React.FC = () => {
         args: [address],
     });
 
-    let struToken = 0;
+    let struToken = '0.00';
     if (data) {
         struToken = numberToWei(data).toFixed(2);
     } else {
@@ -63,7 +63,7 @@ const StakeDashboard: React.FC = () => {
 
     // console.log('totalStakesData', totalStakesData);
 
-    let APR = 0;
+    let APR = '0';
     if (rewardDurationData && totalStakesData) {
         APR = (
             (Number(rewardDurationData) * 100) /
@@ -92,7 +92,7 @@ const StakeDashboard: React.FC = () => {
     // console.log('periodFinishIsError', periodFinishIsError);
     // console.log('periodFinishIsLoading', periodFinishIsLoading);
 
-    let days = 0;
+    let days = '0';
     if (periodFinishData) {
         const currenTimestamp = Date.now() / 1000; //ms to seconds
         days = (
@@ -122,7 +122,7 @@ const StakeDashboard: React.FC = () => {
 
     // console.log('earnedRewardData///////', earnedRewardData);
 
-    let userReward = 0;
+    let userReward = '0';
     if (earnedRewardData) {
         userReward = numberToWei(earnedRewardData).toFixed(2);
     } else {

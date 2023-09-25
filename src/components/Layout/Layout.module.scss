@@ -5,20 +5,25 @@
 
 // --- common margin styles --- //
 
-.mainWrapper {
+.mainBgrWrapper {
+    margin: 0 auto;
+
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
     // Tab background-img 1x, 2x
 
-    @include respond-to('tablet') {
+    @include respond-to('tablet') { 
+        height: 278px;
+
         position: fixed;
         z-index: 99;
         top: 0;
         left: 0;
-        // right: 0;
-        width: 100vw;
+        right: 0;
+        // width: 100vw;
+        
 
         @include retina-background-image(
             '/src/assets/images/technology_background_tab',
@@ -31,6 +36,8 @@
     // PC background-img 1x, 2x
 
     @include respond-to('desktop') {
+        height: 281px;
+
         @include retina-background-image(
             '/src/assets/images/technology_background_pc',
             'jpg',
@@ -41,25 +48,25 @@
 }
 
 .mainContainer {
-    // margin-top: 278px;
+    margin: 0 auto;
+    padding: 0 24px;
+    background-color: getColor('background');
 
-    // margin: 0 auto;
-    // padding: 0 24px;
-    // background-color: getColor('background');
+    @include respond-mob-minMax {
+        // padding-top: 16px;
+        border-radius: 16px 16px 0 0;
+    }
 
-    // @include respond-mob-minMax {
-    //     padding-top: 16px;
-    //     border-radius: 16px 16px 0 0;
-    // }
+    @include respond-to('tablet') { 
+        // padding-top: 278px;
+        padding: 278px 48px 0 48px;
+    }
 
-    // @include respond-to('tablet') {
-    //     padding: 0 48px;
-    // }
-
-    // @include respond-to('desktop') {
-    //     width: 1440px;
-    //     padding: 0 120px;
-    // }
+    @include respond-to('desktop') {
+        margin-top: 281px;
+        width: 1440px;
+        padding: 0 120px;
+    }
 }
 
 main {
@@ -71,7 +78,7 @@ main {
         
     // }
 
-    background-color: getColor('background');
+    // background-color: getColor('background');
 }
 
 // --- common text styles --- //

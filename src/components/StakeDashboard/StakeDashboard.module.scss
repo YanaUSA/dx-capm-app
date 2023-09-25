@@ -4,36 +4,24 @@
 @import '@styles/mixins.module.scss';
 
 .dashboard {
-    // padding-top: 22px;
     padding: 22px 24px 24px;
-    // margin-bottom: 24px;
     width: 100%;
 
     @include respond-to('tablet') {
-        // padding-top: 32px 24;  
-
         padding: 32px 48px;
-
-        // width: 100%;
     }
 
     @include respond-to('desktop') {
-        padding: 24px 120px 48px;
+        padding: 24px 120px 48px 120px;
     }
 }
 
 .infoList {
     display: flex;
-    // margin-top: 26px;
-    // margin-bottom: 24px;
+    margin-top: 26px;
 
     @include respond-to('tablet') {
         margin-top: 16px;
-        margin-bottom: 32px;
-    }
-
-    @include respond-to('desktop') {
-        margin-bottom: 48px;
     }
 
     li:not(:last-child) {
@@ -49,7 +37,7 @@
     }
 
     &__item {
-        max-width: fit-content;
+        // max-width: fit-content;
 
         @include respond-to('desktop') {
             display: flex;
@@ -59,7 +47,7 @@
 
 .infoItemBox {
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
 
     align-items: baseline;
 

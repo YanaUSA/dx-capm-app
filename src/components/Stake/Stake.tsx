@@ -1,28 +1,28 @@
 import { useState, ChangeEvent, MouseEvent } from 'react';
-
 import {
     useContractWrite,
-    usePrepareContractWrite,
-    useWaitForTransaction,
+    // usePrepareContractWrite,
+    // useWaitForTransaction,
 } from 'wagmi';
 import abi from '@contracts/abi.json';
 
 import Input from '@kit/Input/Input';
 import Button from '@kit/Button/Button';
-import Available from '../Available/Available';
+import Available from '@components/Available/Available';
+import LoadingMessage from '@components/LoadingMessage/LoadingMessage';
+import RewardRate from '@components/RewardRate/RewardRate';
 
-import { tokenName } from '@constants/constants';
+// import { tokenName } from '@constants/constants';
 
 import styles from './Stake.module.scss';
-import LoadingMessage from '../LoadingMessage/LoadingMessage';
+
 
 const Stake: React.FC = () => {
     const [stake, setStake] = useState<number | string>();
     const [stakeError, setStakeError] = useState<string>('');
 
-    const weeklyReward = '1';
+    // const weeklyReward = '1';
 
-    const stakeAmount = '100';
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setStake(e?.target.value);
@@ -76,7 +76,8 @@ const Stake: React.FC = () => {
         <div className={styles.stakeContainer}>
             <div className={styles.titleContainer}>
                 <h2>Stake</h2>
-                <div className={styles.rewardRateContainer}>
+                <RewardRate userInput={stake}/>
+                {/* <div className={styles.rewardRateContainer}>
                     <span className={styles.spanStyle}>Reward rate:</span>
                     <span
                         className={styles.spanAmountStyle}
@@ -87,7 +88,7 @@ const Stake: React.FC = () => {
                     <span className={styles.spanDescription}>
                         {tokenName}/week
                     </span>
-                </div>
+                </div> */}
             </div>
 
             <Input
@@ -109,7 +110,7 @@ const Stake: React.FC = () => {
 
             <Available />
 
-            <LoadingMessage stakeAmount={stakeAmount} />
+            <LoadingMessage stakeAmount={stake} />
 
             <Button
                 id="stake"

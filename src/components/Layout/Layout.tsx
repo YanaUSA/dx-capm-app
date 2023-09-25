@@ -23,7 +23,7 @@ import styles from './Layout.module.scss';
 const Layout: React.FC = () => {
     return (
         <>
-            <div className={styles.mainWrapper}>
+            <div className={styles.mainBgrWrapper}>
             <AppBar />
             </div>
             <div className={styles.mainContainer}>

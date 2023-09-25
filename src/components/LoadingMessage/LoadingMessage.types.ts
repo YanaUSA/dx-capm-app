@@ -1,3 +1,3 @@
 export interface LoadingMessageProps {
-    stakeAmount: string;
+    stakeAmount: string | number | undefined;
 }

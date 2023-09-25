@@ -4,19 +4,26 @@
 @import '@styles/mixins.module.scss';
 
 .navContainer {
-    background-color: getColor('background');
-    border-bottom: 1px solid;
-    border-color: getColor('accent-blue');
+    // padding-top: 24px;
+    // background-color: getColor('background');
+
+    @include respond-mob-minMax {
+    //     width: 100vw;
+    //     border-bottom: 1px solid;
+    //     border-color: getColor('accent-blue');
+    }
 }
 
 .navigation {
+    background-color: getColor('background');
+    padding-top: 16px;
+
     @include respond-to('tablet') {
-        // padding: 0 48px;
+        padding-top: 43px;
     }
 
     @include respond-to('desktop') {
-        // padding: 0 120px;
-        // width: 1440px;
+        padding-top: 40px;
     }
 }
 
@@ -48,21 +55,31 @@
 
     &:active {
         color: getColor('white');
+        // color: green;
 
-        &::after {
-                content: '';
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                height: 6px;
-                background: getColor('accent-blue');
-            }
+        // &::after {
+        //     content: '';
+        //     position: absolute;
+        //     left: 0;
+        //     bottom: 0;
+        //     width: 100%;
+        //     height: 6px;
+        //     background: getColor('accent-blue');
+        // }
     }
+
+    // &::after {
+    //     content: '';
+    //     position: absolute;
+    //     left: 0;
+    //     bottom: 0;
+    //     width: 100%;
+    //     height: 6px;
+    //     background: getColor('accent-blue');
+    // }
 
     &:hover,
     &:focus {
-        color: getColor('white');
+        // color: getColor('white');
     }
 }
-
