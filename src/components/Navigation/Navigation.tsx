@@ -14,24 +14,22 @@ const Navigation: React.FC = () => {
     const { isConnected } = useAccount();
 
     return (
-        // <div className={styles.navContainer}>
         <nav className={styles.navigation} aria-label="Navigation panel">
-                <ul className={styles.navLinkList}>
-                    {navigation.map(({ id, name, to }) => (
-                        <li key={id} className={styles.navItem}>
-                            <NavLink
-                                to={isConnected ? `${to}` : '/'}
-                                className={styles.navItemLink}
-                                aria-label={`Navigate to ${name}`}
-                                aria-current="page"
-                            >
-                                {name}
-                            </NavLink>
-                        </li>
-                    ))}
-                </ul>
+            <ul className={styles.navLinkList}>
+                {navigation.map(({ id, name, to }) => (
+                    <li key={id} className={styles.navItem}>
+                        <NavLink
+                            to={isConnected ? `${to}` : '/'}
+                            className={styles.navItemLink}
+                            aria-label={`Navigate to ${name}`}
+                            aria-current="page"
+                        >
+                            {name}
+                        </NavLink>
+                    </li>
+                ))}
+            </ul>
         </nav>
-        // </div>
     );
 };
 

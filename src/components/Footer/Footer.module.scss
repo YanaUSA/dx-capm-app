@@ -4,19 +4,14 @@
 @import '@styles/mixins.module.scss';
 
 .footer {
-    // position: absolute;
-    position: fixed;
-    // position: sticky;
-    z-index: 98;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
+    // position: fixed;
+    // z-index: 98;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+    // width: 100vw;
 
     ////////////////
-    background-color: getColor('background');
-
-    // background-color: red;
 
     display: flex;
     justify-content: space-between;
@@ -24,8 +19,16 @@
     margin: 0 auto;
     padding: 0 24px;
     border-top: 1px solid getColor('accent-blue');
-
+    background-color: getColor('background');
+    
     @include respond-to('tablet') {
+        position: fixed;
+        z-index: 98;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+
         padding: 0 48px;
     }
 

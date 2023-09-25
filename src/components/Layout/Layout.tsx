@@ -24,7 +24,7 @@ const Layout: React.FC = () => {
     return (
         <>
             <div className={styles.mainBgrWrapper}>
-            <AppBar />
+                <AppBar />
             </div>
             <div className={styles.mainContainer}>
                 <Navigation />
@@ -33,8 +33,8 @@ const Layout: React.FC = () => {
                         <Outlet />
                     </main>
                 </Suspense>
-                <Footer />
             </div>
+            <Footer />
         </>
     );
 };

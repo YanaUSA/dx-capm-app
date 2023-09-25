@@ -33,7 +33,7 @@ const StakeDashboard: React.FC = () => {
         struToken = numberToWei(data).toFixed(2);
     } else {
         console.log(error);
-    } 
+    }
     // console.log('isError', isError);
     // console.log('isLoading', isLoading);
     ////////---end-----////
@@ -143,21 +143,21 @@ const StakeDashboard: React.FC = () => {
                 <li className={styles.infoList__item}>
                     <div
                         className={styles.infoItemBox}
-                        // style={
-                        //     isTablet
-                        //         ? { marginRight: '27px' }
-                        //         : { marginRight: '0px' }
-                        // }
+                        style={
+                            isTablet
+                                ? { marginRight: '27px' }
+                                : { marginRight: '0px' }
+                        }
                         aria-label="staked balance amount"
                         aria-describedby="info item desc"
                     >
                         <span
                             className={styles.itemValue}
-                            // style={
-                            //     isMobile
-                            //         ? { marginRight: '4px' }
-                            //         : { marginRight: '8px' }
-                            // }
+                            style={
+                                isMobile
+                                    ? { marginRight: '4px' }
+                                    : { marginRight: '8px' }
+                            }
                         >
                             {struToken}
                         </span>
@@ -174,22 +174,22 @@ const StakeDashboard: React.FC = () => {
                         >
                             <Icon
                                 name="icon-help-circle"
-                                widthSize="16"
-                                heightSize="16"
+                                widthSize="18"
+                                heightSize="18"
                                 fill="white"
                             />
                         </ButtonIconWrapper>
-
-                        <span id="info item desc" className={styles.itemDesc}>
-                            Staked balance
-                        </span>
                     </div>
+                    <span id="info item desc" className={styles.itemDesc}>
+                        Staked balance
+                    </span>
+                    
                 </li>
 
                 <li className={styles.infoList__item}>
                     <div
                         className={styles.infoItemBox}
-                        style={{ width: '55px' }}
+                        // style={{ width: '55px' }}
                         aria-label="reward percentage"
                         aria-describedby="info item desc"
                     >
@@ -203,57 +203,55 @@ const StakeDashboard: React.FC = () => {
                         >
                             <Icon
                                 name="icon-help-circle"
-                                widthSize="16"
-                                heightSize="16"
+                                widthSize="18"
+                                heightSize="18"
                                 fill="white"
                             />
                         </ButtonIconWrapper>
-
-                        <span id="info item desc" className={styles.itemDesc}>
-                            APR
-                        </span>
                     </div>
+                    <span id="info item desc" className={styles.itemDesc}>
+                        APR
+                    </span>
                 </li>
 
                 <li className={styles.infoList__item}>
                     <div
                         className={styles.infoItemBox}
-                        // style={
-                        //     isTablet
-                        //         ? { marginRight: '71px' }
-                        //         : { marginRight: '0px' }
-                        // }
+                        style={
+                            isTablet
+                                ? { marginRight: '71px' }
+                                : { marginRight: '0px' }
+                        }
                         aria-label="number of days"
                         aria-describedby="info item desc"
                     >
                         <span className={styles.itemValue}>{days}</span>
-
-                        <span id="info item desc" className={styles.itemDesc}>
-                            Days
-                        </span>
                     </div>
+                    <span id="info item desc" className={styles.itemDesc}>
+                        Days
+                    </span>
                 </li>
 
                 <li className={styles.infoList__item}>
                     <div
                         className={styles.infoItemBox}
-                        // style={
-                        //     isTablet
-                        //         ? { marginRight: '156px' }
-                        //         : { marginRight: '0px' }
-                        // }
+                        style={
+                            isTablet
+                                ? { marginRight: '156px' }
+                                : { marginRight: '0px' }
+                        }
                         aria-label="reward amount"
                         aria-describedby="info item desc"
                     >
                         <span
                             className={styles.itemValue}
-                            // style={
-                            //     isMobile
-                            //         ? { marginRight: '2px' }
-                            //         : isTablet
-                            //         ? { marginRight: '4px' }
-                            //         : { marginRight: '8px' }
-                            // }
+                            style={
+                                isMobile
+                                    ? { marginRight: '2px' }
+                                    : isTablet
+                                    ? { marginRight: '4px' }
+                                    : { marginRight: '8px' }
+                            }
                         >
                             {userReward}
                         </span>
@@ -271,15 +269,15 @@ const StakeDashboard: React.FC = () => {
                         >
                             <Icon
                                 name="icon-help-circle"
-                                widthSize="16"
-                                heightSize="16"
+                                widthSize="18"
+                                heightSize="18"
                                 fill="white"
                             />
                         </ButtonIconWrapper>
-                        <span id="info item desc" className={styles.itemDesc}>
-                            Rewards
-                        </span>
                     </div>
+                    <span id="info item desc" className={styles.itemDesc}>
+                        Rewards
+                    </span>
                 </li>
             </ul>
         </div>

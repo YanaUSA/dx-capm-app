@@ -1,4 +1,4 @@
-import { createConfig, configureChains, createStorage } from 'wagmi';
+import { createConfig, configureChains } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
 // import { alchemyProvider } from 'wagmi/providers/alchemy';
 // import { infuraProvider } from 'wagmi/providers/infura';
@@ -50,7 +50,6 @@ export const config = createConfig({
             },
         }),
     ],
-    // storage: createStorage({ storage: window.localStorage }),
     publicClient,
     webSocketPublicClient,
 });

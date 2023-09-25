@@ -15,8 +15,6 @@
     // Tab background-img 1x, 2x
 
     @include respond-to('tablet') { 
-        height: 278px;
-
         position: fixed;
         z-index: 99;
         top: 0;
@@ -53,19 +51,16 @@
     background-color: getColor('background');
 
     @include respond-mob-minMax {
-        // padding-top: 16px;
         border-radius: 16px 16px 0 0;
     }
 
     @include respond-to('tablet') { 
-        // padding-top: 278px;
         padding: 278px 48px 0 48px;
     }
 
     @include respond-to('desktop') {
-        margin-top: 281px;
         width: 1440px;
-        padding: 0 120px;
+        padding: 282px 120px 0 120px;
     }
 }
 

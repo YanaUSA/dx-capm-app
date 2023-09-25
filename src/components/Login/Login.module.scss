@@ -13,6 +13,7 @@
     @include respond-to('tablet') {
         border: 1px solid getColor('accent-blue');
         padding: 63px 68px;
+        margin-bottom: 158px;
     }
 }
 

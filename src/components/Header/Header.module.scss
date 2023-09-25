@@ -44,6 +44,10 @@
     display: flex;
     align-items: center;
     fill: getColor('white');
+
+    @include respond-to('tablet') {
+        padding: 14px 0;
+    }
 }
 
 .headerBtn {

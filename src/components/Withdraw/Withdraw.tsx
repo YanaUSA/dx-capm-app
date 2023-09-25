@@ -5,13 +5,14 @@ import Button from '@kit/Button/Button';
 import Available from '../Available/Available';
 
 import styles from './Withdraw.module.scss';
+import LoadingMessage from '../LoadingMessage/LoadingMessage';
+
 
 
 const Withdraw: React.FC = () => {
     const [withdraw, setWithdraw] = useState<string>('');
     const [withdrawError, setWithdrawError] = useState<string>('');
 
-    const tokenAmount = '354';
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value: string = e.target.value;
@@ -46,7 +47,7 @@ const Withdraw: React.FC = () => {
                 required
             />
 
-            <Available tokenAmount={tokenAmount} />
+            <Available />
 
             <Button
                 id="withdraw"

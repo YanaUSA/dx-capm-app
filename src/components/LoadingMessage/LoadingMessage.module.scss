@@ -10,7 +10,9 @@
     // transform: translate(-50%, -50%);
 
     display: flex;
+    justify-content: center;
     margin-bottom: 32px;
+
 
     @include respond-to('tablet') {
         padding: 8px 0;

@@ -17,6 +17,8 @@
 }
 
 .infoList {
+    // height:72px; // need to fix
+
     display: flex;
     margin-top: 26px;
 
@@ -37,10 +39,16 @@
     }
 
     &__item {
-        // max-width: fit-content;
+
+        @include respond-to('tablet') {
+            // flex-wrap: wrap;
+            // min-width: calc((100% - 216px) / 4);
+
+        }
 
         @include respond-to('desktop') {
             display: flex;
+            align-items: baseline;
         }
     }
 }
@@ -96,7 +104,8 @@
     }
 
     @include respond-to('desktop') {
-        align-self: baseline;
+        // align-self: baseline;
+
         order: 2;
     }
 }

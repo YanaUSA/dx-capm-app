@@ -21,9 +21,6 @@ const Stake: React.FC = () => {
     const [stake, setStake] = useState<number | string>();
     const [stakeError, setStakeError] = useState<string>('');
 
-    // const weeklyReward = '1';
-
-
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setStake(e?.target.value);
         // validateStakeValue(stake);
@@ -77,18 +74,6 @@ const Stake: React.FC = () => {
             <div className={styles.titleContainer}>
                 <h2>Stake</h2>
                 <RewardRate userInput={stake}/>
-                {/* <div className={styles.rewardRateContainer}>
-                    <span className={styles.spanStyle}>Reward rate:</span>
-                    <span
-                        className={styles.spanAmountStyle}
-                        aria-label="Amount of weekly reward"
-                    >
-                        {weeklyReward}
-                    </span>
-                    <span className={styles.spanDescription}>
-                        {tokenName}/week
-                    </span>
-                </div> */}
             </div>
 
             <Input
@@ -110,7 +95,7 @@ const Stake: React.FC = () => {
 
             <Available />
 
-            <LoadingMessage stakeAmount={stake} />
+            {/* <LoadingMessage stakeAmount={stake} /> */}
 
             <Button
                 id="stake"

@@ -8,8 +8,8 @@
     flex-direction: column;
 
     @include respond-mob-minMax {
-        margin-top: 26px;
-        margin-bottom: 56px;
+        padding-top: 26px;
+        padding-bottom: 56px;
     }
 
     @include respond-to('tablet') {
