@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
 
-import {useMatchMediaValues} from './useMatchMedia.types'
-
 const queries = [
     '(max-width: 743px)',
     '(min-width: 744px) and (max-width: 1439px)',
     '(min-width: 1440px)',
 ];
 
+interface useMatchMediaValues {
+    isMobile?: boolean;
+    isTablet?: boolean;
+    isDesktop?: boolean;
+}
+
 const useMatchMedia = (): useMatchMediaValues => {
     const mediaQueryLists = queries.map(query => matchMedia(query));
 
-    const getValues = (): boolean[] => mediaQueryLists.map(list => list.matches);
+    const getValues = (): boolean[] =>
+        mediaQueryLists.map(list => list.matches);
 
     const [values, setValues] = useState<boolean[]>(getValues);
 

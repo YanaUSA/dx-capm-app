@@ -2,12 +2,12 @@ import { useAccount, useContractRead } from 'wagmi';
 import { tokenName } from '@constants/constants';
 import userAbi from '@contracts/userAbi.json';
 
-import { AvailableProps } from './Available.types';
+// import { AvailableProps } from './Available.types';
 
 import styles from './Available.module.scss';
 
 
-const Available: React.FC<AvailableProps> = props => {
+const Available: React.FC = () => {
     const { address, isConnecting, isConnected } = useAccount();
 
     const { data, isError, isLoading } = useContractRead({

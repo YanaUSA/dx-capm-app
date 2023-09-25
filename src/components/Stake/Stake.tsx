@@ -20,10 +20,6 @@ const Stake: React.FC = () => {
     const [stake, setStake] = useState<number | string>();
     const [stakeError, setStakeError] = useState<string>('');
 
-    console.log('stake', stake);
-
-    const tokenAmount = '354';
-
     const weeklyReward = '1';
 
     const stakeAmount = '100';
@@ -61,30 +57,20 @@ const Stake: React.FC = () => {
     const handleSubmit = e => {
         e.preventDefault();
         const sendTokenStru = formatToWei(stake);
-        console.log('sendTokenStru', sendTokenStru);
+        // console.log('sendTokenStru', sendTokenStru);
 
         write?.({ args: [sendTokenStru] });
-        console.log('stake send submit', stake);
+        // console.log('stake send submit', stake);
 
         //--- input reset ---//
-        setStake("");
+        setStake('');
+
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-
-    //     // validateStakeValue(stake);
-
-    //     if (!stakeError) {
-    //         //     // Submit form and send validated data
-    //         console.log('SUCCESS!!!!!!!!!!!!!!!!!!');
-    //     }
-
-    //     console.log('stake:', stake);
-
-    //     //--- input reset ---//
-    //     setStake('');
-    // };
+    // console.log("data****", data)
+    // if(data) {
+    //     window.location.reload(true)
+    // }
 
     return (
         <div className={styles.stakeContainer}>
@@ -121,7 +107,7 @@ const Stake: React.FC = () => {
                 required
             />
 
-            <Available tokenAmount={tokenAmount} />
+            <Available />
 
             <LoadingMessage stakeAmount={stakeAmount} />
 
