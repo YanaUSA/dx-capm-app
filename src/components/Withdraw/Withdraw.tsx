@@ -61,7 +61,7 @@ const Withdraw: React.FC = () => {
 
         if (!withdraw) {
             setWithdrawError('This field can not be empty');
-            return alert('This field can not be empty');
+            
         }
 
         if (withdraw && userBalanceData) {
