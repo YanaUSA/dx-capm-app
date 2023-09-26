@@ -83,7 +83,6 @@ const Withdraw: React.FC = () => {
                 labelTextStyle={styles.regLabelText}
                 inputStyle={styles.inputStyle}
                 inputError={withdrawError}
-                // handleBlur={handleBlurChange}
                 onChange={handleChange}
                 ariaLabel="Input to enter withdraw amount"
                 ariaInvalid={withdrawError ? true : false}

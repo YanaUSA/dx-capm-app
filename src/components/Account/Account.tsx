@@ -3,11 +3,13 @@ import Icon from '@kit/Icon/Icon';
 import { tokenName, gasTokenName } from '@constants/constants';
 import useMatchMedia from '@hooks/useMatchMedia';
 import tokenAvatar from '@assets/images/STRU.png';
+import { formatFromWeiToEther } from '@/helpers/helpersFunctions';
 
 import userAbi from '@contracts/userAbi.json';
 
 import { AccountProps } from './Account.types';
 import styles from './Account.module.scss';
+
 
 const Account: React.FC<AccountProps> = props => {
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
@@ -27,8 +29,16 @@ const Account: React.FC<AccountProps> = props => {
         args: [address],
     });
 
-    const formattedTokenBalance = Number(data) / 1000000000000000000;  
-    const formattedEthBalance = Number(balanceData).toFixed(4);
+    let formattedTokenBalance ="0.00"
+    if(data){
+        formattedTokenBalance = formatFromWeiToEther(data).toFixed(2); 
+    }
+
+    let formattedEthBalance ="0.00"
+    if(balanceData){
+        formattedEthBalance = Number(balanceData).toFixed(4);
+    }
+
     const formattedAcc = `${address?.slice(0, 16)}...`;
 
     return (
