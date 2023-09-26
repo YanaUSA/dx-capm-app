@@ -8,14 +8,13 @@ import abi from '@contracts/abi.json';
 
 import Input from '@kit/Input/Input';
 import Button from '@kit/Button/Button';
-import Available from '@components/Available/Available';
-import LoadingMessage from '@components/LoadingMessage/LoadingMessage';
+import AvailableBalance from '@/components/AvailableBalance/AvailableBalance';
+// import LoadingMessage from '@components/LoadingMessage/LoadingMessage';
 import RewardRate from '@components/RewardRate/RewardRate';
 
 // import { tokenName } from '@constants/constants';
 
 import styles from './Stake.module.scss';
-
 
 const Stake: React.FC = () => {
     const [stake, setStake] = useState<number | string>();
@@ -61,7 +60,6 @@ const Stake: React.FC = () => {
 
         //--- input reset ---//
         setStake('');
-
     };
 
     // console.log("data****", data)
@@ -73,7 +71,7 @@ const Stake: React.FC = () => {
         <div className={styles.stakeContainer}>
             <div className={styles.titleContainer}>
                 <h2>Stake</h2>
-                <RewardRate userInput={stake}/>
+                <RewardRate userInput={stake} />
             </div>
 
             <Input
@@ -93,7 +91,7 @@ const Stake: React.FC = () => {
                 required
             />
 
-            <Available />
+            <AvailableBalance />
 
             {/* <LoadingMessage stakeAmount={stake} /> */}
 

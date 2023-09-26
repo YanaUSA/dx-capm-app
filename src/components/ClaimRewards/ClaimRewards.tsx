@@ -1,7 +1,7 @@
 // import { useState, ChangeEvent, FormEvent } from 'react';
 
 import Button from '@kit/Button/Button';
-import Available from '@components/Available/Available'
+import Available from '@/components/AvailableBalance/AvailableBalance'
 
 import styles from './ClaimRewards.module.scss';
 

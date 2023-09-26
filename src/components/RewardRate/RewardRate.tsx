@@ -6,7 +6,7 @@ import styles from './RewardRate.module.scss';
 
 const WEI_NUMBER = 1000000000000000000;
 
-function numberToWei(valueData: BigInt | number | {}): number {
+function formatFromWeiToEther(valueData: BigInt | number | {}): number {
     const dataToNumber = Number(valueData);
     return dataToNumber / WEI_NUMBER;
 }
@@ -70,7 +70,7 @@ const RewardRate: React.FC<RewardsRateProps> = ({ userInput }) => {
             (Number(data) * totalAvailbleRewards) /
             (Number(totalStakesData) + Number(data));
 
-        totalRewardRate = numberToWei(totalRewardRateInWei).toFixed(2);
+        totalRewardRate = formatFromWeiToEther(totalRewardRateInWei).toFixed(2);
 
         if (userInput) {
             const totalRewardRateInWeiInput =
@@ -78,7 +78,7 @@ const RewardRate: React.FC<RewardsRateProps> = ({ userInput }) => {
                 (Number(totalStakesData) +
                     Number(userInput) * WEI_NUMBER);
 
-            totalRewardRateInput = numberToWei(
+            totalRewardRateInput = formatFromWeiToEther(
                 totalRewardRateInWeiInput
             ).toFixed(2);
         }

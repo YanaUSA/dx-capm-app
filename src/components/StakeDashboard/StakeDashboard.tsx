@@ -10,7 +10,7 @@ import styles from './StakeDashboard.module.scss';
 const SECONDS_IN_DAY = 24 * 60 * 60;
 const WEI_NUMBER = 1000000000000000000;
 
-function numberToWei(valueData: BigInt | number | {}): number {
+function formatFromWeiToEther(valueData: BigInt | number | {}): number {
     const dataToNumber = Number(valueData);
     return dataToNumber / WEI_NUMBER;
 }
@@ -30,7 +30,7 @@ const StakeDashboard: React.FC = () => {
 
     let struToken = '0.00';
     if (data) {
-        struToken = numberToWei(data).toFixed(2);
+        struToken = formatFromWeiToEther(data).toFixed(2);
     } else {
         console.log(error);
     }
@@ -124,7 +124,7 @@ const StakeDashboard: React.FC = () => {
 
     let userReward = '0';
     if (earnedRewardData) {
-        userReward = numberToWei(earnedRewardData).toFixed(2);
+        userReward = formatFromWeiToEther(earnedRewardData).toFixed(2);
     } else {
         console.log(earnedRewardError);
     }

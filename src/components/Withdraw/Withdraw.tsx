@@ -2,27 +2,82 @@ import { useState, ChangeEvent } from 'react';
 
 import Input from '@kit/Input/Input';
 import Button from '@kit/Button/Button';
-import Available from '../Available/Available';
+import AvailableBalance from '@/components/AvailableBalance/AvailableBalance';
+// import LoadingMessage from '@components/LoadingMessage/LoadingMessage';
+import { useAccount, useContractRead, useContractWrite } from 'wagmi';
+import abi from '@contracts/abi.json';
 
 import styles from './Withdraw.module.scss';
-import LoadingMessage from '../LoadingMessage/LoadingMessage';
 
+const WEI_NUMBER = 1000000000000000000;
 
+function formatToWei(value: any) {
+    return value * WEI_NUMBER;
+}
+
+function formatFromWeiToEther(valueData: BigInt | number | {}): number {
+    const dataToNumber = Number(valueData);
+    return dataToNumber / WEI_NUMBER;
+}
 
 const Withdraw: React.FC = () => {
-    const [withdraw, setWithdraw] = useState<string>('');
+    const [withdraw, setwithdraw] = useState<number | string>();
     const [withdrawError, setWithdrawError] = useState<string>('');
+    const { address, isConnecting, isDisconnected } = useAccount();
 
+    //---- contract logic -----//
+    const userBalance = useContractRead({
+        address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
+        abi: abi,
+        functionName: 'balanceOf',
+        args: [address],
+    });
 
+    const userBalanceData = userBalance.data;
+    const userBalanceError = userBalance.error;
+    const userBalanceIsError = userBalance.isError;
+    const userBalanceIsLoading = userBalance.isLoading;
+
+    let availableToWithdraw = '0.00';
+    if (userBalanceData) {
+        availableToWithdraw = formatFromWeiToEther(userBalanceData).toFixed(2);
+    } else {
+        console.log(userBalanceError);
+    }
+
+    const { data, isLoading, isSuccess, write } = useContractWrite({
+        address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
+        abi: abi,
+        functionName: 'withdraw',
+    });
+
+    //------ handlers logic -------//
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const value: string = e.target.value;
-
-        setWithdraw(value);
+        setwithdraw(e?.target.value);
     };
 
-    const handleSubmit =()=>{
-      console.log("handleSubmit Claim rewards")
-  }
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+
+        if (!withdraw) {
+            setWithdrawError('This field can not be empty');
+            return alert('This field can not be empty');
+        }
+
+        if (withdraw && userBalanceData) {
+            const getWithdraw = formatToWei(withdraw);
+
+            if (getWithdraw > Number(userBalanceData)) {
+                return alert(
+                    'Amount of rewards you claim is too big. Please enter correct amount of STRU'
+                );
+            }
+            write?.({ args: [getWithdraw] });
+        }
+
+        // //--- input reset ---//
+        setwithdraw('');
+    };
 
     return (
         <div className={styles.withdrawContainer}>
@@ -42,12 +97,12 @@ const Withdraw: React.FC = () => {
                 // handleBlur={handleBlurChange}
                 onChange={handleChange}
                 ariaLabel="Input to enter withdraw amount"
-                ariaInvalid={withdrawError ? 'true' : 'false'}
+                ariaInvalid={withdrawError ? true : false}
                 ariaDescribedby="withdraw-error"
                 required
             />
 
-            <Available />
+            <AvailableBalance availableAmount={availableToWithdraw} />
 
             <Button
                 id="withdraw"

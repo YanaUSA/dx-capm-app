@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, HTMLInputTypeAttribute } from 'react';
+import { InputHTMLAttributes, HTMLInputTypeAttribute, ChangeEvent } from 'react';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     name?: string;
@@ -13,7 +13,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     inputStyle?: string;
     inputError?: string;
     handleBlur?: () => void;
-    onChange?: () => void;
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
     ariaLabel?: string;
     ariaInvalid?: boolean;
     ariaDescribedby?: string;
