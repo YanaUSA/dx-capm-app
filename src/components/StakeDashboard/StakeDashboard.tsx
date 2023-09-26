@@ -4,23 +4,17 @@ import ButtonIconWrapper from '@kit/ButtonIconWrapper/ButtonIconWrapper';
 import Icon from '@kit/Icon/Icon';
 import { tokenName } from '@constants/constants';
 import useMatchMedia from '@hooks/useMatchMedia';
+import {formatFromWeiToEther} from '@helpers/helpersFunctions'
 
 import styles from './StakeDashboard.module.scss';
 
 const SECONDS_IN_DAY = 24 * 60 * 60;
-const WEI_NUMBER = 1000000000000000000;
-
-function formatFromWeiToEther(valueData: BigInt | number | {}): number {
-    const dataToNumber = Number(valueData);
-    return dataToNumber / WEI_NUMBER;
-}
 
 const StakeDashboard: React.FC = () => {
-    // console.log('hiiiiiiiiiiiiiiiiiiiii');
     const { isMobile, isTablet } = useMatchMedia();
     const { address, isConnecting, isDisconnected } = useAccount();
 
-    //////-------STRU Staked Balance ------///////
+    //------- STRU Staked Balance ------//
     const { data, isError, isLoading, error } = useContractRead({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
@@ -34,11 +28,8 @@ const StakeDashboard: React.FC = () => {
     } else {
         console.log(error);
     }
-    // console.log('isError', isError);
-    // console.log('isLoading', isLoading);
-    ////////---end-----////
 
-    //////-------APR------///////
+    //--------- APR ---------//
     const rewardDuration = useContractRead({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
@@ -61,8 +52,6 @@ const StakeDashboard: React.FC = () => {
     const totalStakesIsError = totalStakes.isError;
     const totalStakesIsLoading = totalStakes.isLoading;
 
-    // console.log('totalStakesData', totalStakesData);
-
     let APR = '0';
     if (rewardDurationData && totalStakesData) {
         APR = (
@@ -72,25 +61,18 @@ const StakeDashboard: React.FC = () => {
     } else {
         console.log(rewardDurationError || totalStakesError);
     }
-    ////////---end-----////
 
-    //////-------Days ------///////
-
+    //--------- Days ---------//
     const periodFinish = useContractRead({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
         functionName: 'periodFinish',
     });
 
-    // const periodFinishData = Number(periodFinish.data);
     const periodFinishData = periodFinish.data;
     const periodFinishError = periodFinish.error;
     const periodFinishIsError = periodFinish.isError;
     const periodFinishIsLoading = periodFinish.isLoading;
-
-    // console.log('periodFinishData', periodFinishData);
-    // console.log('periodFinishIsError', periodFinishIsError);
-    // console.log('periodFinishIsLoading', periodFinishIsLoading);
 
     let days = '0';
     if (periodFinishData) {
@@ -103,11 +85,7 @@ const StakeDashboard: React.FC = () => {
         console.log(periodFinishError);
     }
 
-    // console.log('days-----------', days);
-    ////////---end-----////
-
-    //////-------STRU Rewards ------///////
-
+    //---------- Rewards -----------//
     const earnedReward = useContractRead({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
@@ -120,16 +98,12 @@ const StakeDashboard: React.FC = () => {
     const earnedRewardIsError = earnedReward.isError;
     const earnedRewardIsLoading = earnedReward.isLoading;
 
-    // console.log('earnedRewardData///////', earnedRewardData);
-
     let userReward = '0';
     if (earnedRewardData) {
         userReward = formatFromWeiToEther(earnedRewardData).toFixed(2);
     } else {
         console.log(earnedRewardError);
     }
-    // console.log('------userReward--///////', userReward);
-    ////////---end-----////
 
     return (
         <div className={styles.dashboard}>
@@ -189,7 +163,6 @@ const StakeDashboard: React.FC = () => {
                 <li className={styles.infoList__item}>
                     <div
                         className={styles.infoItemBox}
-                        // style={{ width: '55px' }}
                         aria-label="reward percentage"
                         aria-describedby="info item desc"
                     >

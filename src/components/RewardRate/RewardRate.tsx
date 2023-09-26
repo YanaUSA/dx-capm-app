@@ -1,22 +1,20 @@
 import { useAccount, useContractRead } from 'wagmi';
 import abi from '@contracts/abi.json';
 import { tokenName } from '@constants/constants';
+
 import { RewardsRateProps } from './RewardRate.types';
 import styles from './RewardRate.module.scss';
 
-const WEI_NUMBER = 1000000000000000000;
+import {formatFromWeiToEther} from '@helpers/helpersFunctions'
+import {WEI_NUMBER} from '@constants/constants'
 
-function formatFromWeiToEther(valueData: BigInt | number | {}): number {
-    const dataToNumber = Number(valueData);
-    return dataToNumber / WEI_NUMBER;
-}
 
 const currenTimestamp = Date.now() / 1000; //ms to seconds
 
 const RewardRate: React.FC<RewardsRateProps> = ({ userInput }) => {
     const { address } = useAccount();
 
-    //////------RewardRate ------///////
+    //---------- contract logic --------//
     const periodFinish = useContractRead({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
@@ -38,8 +36,6 @@ const RewardRate: React.FC<RewardsRateProps> = ({ userInput }) => {
     const rewardRateError = rewardRate.error;
     const rewardRateIsError = rewardRate.isError;
     const rewardRateIsLoading = rewardRate.isLoading;
-
-    console.log('periodFinishData///////', rewardRateData);
 
     const { data, isError, isLoading, error } = useContractRead({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',

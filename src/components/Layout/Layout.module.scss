@@ -20,8 +20,6 @@
         top: 0;
         left: 0;
         right: 0;
-        // width: 100vw;
-        
 
         @include retina-background-image(
             '/src/assets/images/technology_background_tab',
@@ -55,25 +53,13 @@
     }
 
     @include respond-to('tablet') { 
-        padding: 278px 48px 0 48px;
+        padding: 278px 48px 70px 48px;
     }
 
     @include respond-to('desktop') {
         width: 1440px;
         padding: 282px 120px 0 120px;
     }
-}
-
-main {
-    // position: relative;   
-    // overflow: auto;
-    // margin-bottom: 42px;
-
-    // @include respond-mob-minMax {
-        
-    // }
-
-    // background-color: getColor('background');
 }
 
 // --- common text styles --- //

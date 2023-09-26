@@ -1,13 +1,15 @@
 // import { useState, ChangeEvent, FormEvent } from 'react';
 
 import Button from '@kit/Button/Button';
-import Available from '@/components/AvailableBalance/AvailableBalance'
+
+
+import AvailableBalance from '../AvailableBalance/AvailableBalance';
 
 import styles from './ClaimRewards.module.scss';
 
 const ClaimRewards: React.FC = () => {
   
-    const tokenAmount = '354';
+    const availableToClaim = '1111111';
 
     const handleSubmit =()=>{
         console.log("handleSubmit Claim rewards")
@@ -19,7 +21,7 @@ const ClaimRewards: React.FC = () => {
                 <h2>Claim rewards</h2>
             </div>
 
-            <Available tokenAmount={tokenAmount}/>
+            <AvailableBalance availableAmount={availableToClaim} />
 
             <Button
                 id="rewards"

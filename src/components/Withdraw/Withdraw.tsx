@@ -1,24 +1,13 @@
 import { useState, ChangeEvent } from 'react';
-
+import { useAccount, useContractRead, useContractWrite } from 'wagmi';
 import Input from '@kit/Input/Input';
 import Button from '@kit/Button/Button';
 import AvailableBalance from '@/components/AvailableBalance/AvailableBalance';
-// import LoadingMessage from '@components/LoadingMessage/LoadingMessage';
-import { useAccount, useContractRead, useContractWrite } from 'wagmi';
+
 import abi from '@contracts/abi.json';
+import {formatToWei, formatFromWeiToEther} from '@helpers/helpersFunctions'
 
 import styles from './Withdraw.module.scss';
-
-const WEI_NUMBER = 1000000000000000000;
-
-function formatToWei(value: any) {
-    return value * WEI_NUMBER;
-}
-
-function formatFromWeiToEther(valueData: BigInt | number | {}): number {
-    const dataToNumber = Number(valueData);
-    return dataToNumber / WEI_NUMBER;
-}
 
 const Withdraw: React.FC = () => {
     const [withdraw, setwithdraw] = useState<number | string>();

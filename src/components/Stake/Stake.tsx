@@ -4,11 +4,7 @@ import {
     useContractRead,
     useContractWrite,
     // usePrepareContractWrite,
-    // useWaitForTransaction,
 } from 'wagmi';
-
-import userAbi from '@contracts/userAbi.json';
-import abi from '@contracts/abi.json';
 
 import Input from '@kit/Input/Input';
 import Button from '@kit/Button/Button';
@@ -16,18 +12,11 @@ import AvailableBalance from '@/components/AvailableBalance/AvailableBalance';
 // import LoadingMessage from '@components/LoadingMessage/LoadingMessage';
 import RewardRate from '@components/RewardRate/RewardRate';
 
+import {formatToWei, formatFromWeiToEther} from '@helpers/helpersFunctions'
+import userAbi from '@contracts/userAbi.json';
+import abi from '@contracts/abi.json';
+
 import styles from './Stake.module.scss';
-
-const WEI_NUMBER = 1000000000000000000;
-
-function formatToWei(value: any) {
-    return value * 1000000000000000000;
-}
-
-function formatFromWeiToEther(valueData: BigInt | number | {}): number {
-    const dataToNumber = Number(valueData);
-    return dataToNumber / WEI_NUMBER;
-}
 
 const Stake: React.FC = () => {
     const { address, isConnecting, isConnected } = useAccount();

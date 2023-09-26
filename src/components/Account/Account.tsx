@@ -1,4 +1,4 @@
-import { useAccount, useConnect, useBalance, useContractRead } from 'wagmi';
+import { useAccount, useBalance, useContractRead } from 'wagmi';
 import Icon from '@kit/Icon/Icon';
 import { tokenName, gasTokenName } from '@constants/constants';
 import useMatchMedia from '@hooks/useMatchMedia';
@@ -19,8 +19,7 @@ const Account: React.FC<AccountProps> = props => {
 
     const balanceData = userBalance.data?.formatted;
 
-    console.log("balanceData", balanceData)
-
+     //---- contract logic -----//
     const { data, isError, isLoading } = useContractRead({
         address: '0x59Ec26901B19fDE7a96f6f7f328f12d8f682CB83',
         abi: userAbi,

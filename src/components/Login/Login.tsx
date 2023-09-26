@@ -1,5 +1,4 @@
 import { useConnect } from 'wagmi';
-
 import Button from '@kit/Button/Button';
 import Icon from '@kit/Icon/Icon';
 

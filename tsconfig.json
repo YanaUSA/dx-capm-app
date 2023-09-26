@@ -27,6 +27,7 @@
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
       "@contracts/*": ["src/contracts/*"],
+      "@helpers/*": ["src/helpers/*"],
       "@hooks/*": ["src/hooks/*"],
       "@kit/*": ["src/kit/*"],
       "@pages/*": ["src/pages/*"],

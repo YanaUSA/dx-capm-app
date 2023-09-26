@@ -60,17 +60,17 @@
   }
 }
 
-// .inputError {
-//     height: 24px;
-//     font-size: getFontSize("s-small");
-//     color: getColor("warning-rose");
-//     animation: fadein 70ms $cubic;
-//   }
+.inputError {
+    height: 24px;
+    font-size: getFontSize("s-small");
+    color: getColor("accent-red");
+    animation: fadein 70ms $cubic;
+  }
   
-//   .error {
-//       border-bottom: 1px solid getColor("warning-rose");
-//   }
+  .error {
+      border-bottom: 1px solid getColor("accent-red");
+  }
   
-//     @keyframes fadein {
-//       0%   { opacity: 0; }
-//   }
+    @keyframes fadein {
+      0%   { opacity: 0; }
+  }
