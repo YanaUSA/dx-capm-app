@@ -1,10 +1,13 @@
+import Popup from 'reactjs-popup';
 import { useAccount, useContractRead } from 'wagmi';
 import abi from '@contracts/abi.json';
 import ButtonIconWrapper from '@kit/ButtonIconWrapper/ButtonIconWrapper';
 import Icon from '@kit/Icon/Icon';
 import { tokenName } from '@constants/constants';
 import useMatchMedia from '@hooks/useMatchMedia';
-import {formatFromWeiToEther} from '@helpers/helpersFunctions'
+import { formatFromWeiToEther } from '@helpers/helpersFunctions';
+
+import PopUp from '../popUp/popUp';
 
 import styles from './StakeDashboard.module.scss';
 
@@ -141,23 +144,21 @@ const StakeDashboard: React.FC = () => {
                         >
                             {tokenName}
                         </span>
-                        <ButtonIconWrapper
-                            type="button"
-                            className={styles.infoIconBtn}
-                            ariaLabel="icon-button opening info desc pop-up"
-                        >
-                            <Icon
-                                name="icon-help-circle"
-                                widthSize="18"
-                                heightSize="18"
-                                fill="white"
-                            />
-                        </ButtonIconWrapper>
+                        <div className={styles.infoIconBtn}>
+                            <PopUp content="Staking rewards get allocated on this sum">
+                                <Icon
+                                    name="icon-help-circle"
+                                    widthSize="18"
+                                    heightSize="18"
+                                    stroke="white"
+                                    ariaLabel="icon-button opening info desc pop-up"
+                                />
+                            </PopUp>
+                        </div>
                     </div>
                     <span id="info item desc" className={styles.itemDesc}>
                         Staked balance
                     </span>
-                    
                 </li>
 
                 <li className={styles.infoList__item}>
@@ -169,18 +170,20 @@ const StakeDashboard: React.FC = () => {
                         <span className={styles.itemValue}>
                             &#8776;{APR}&#37;
                         </span>
-                        <ButtonIconWrapper
-                            type="button"
-                            className={styles.infoIconBtn}
-                            ariaLabel="icon-button opening info desc pop-up"
-                        >
-                            <Icon
-                                name="icon-help-circle"
-                                widthSize="18"
-                                heightSize="18"
-                                fill="white"
-                            />
-                        </ButtonIconWrapper>
+                        <div className={styles.infoIconBtn}>
+                            <PopUp
+                                content="Displays the average for APR.
+                                Interest rate is calculated for each amount of tokens."
+                            >
+                                <Icon
+                                    name="icon-help-circle"
+                                    widthSize="18"
+                                    heightSize="18"
+                                    stroke="white"
+                                    ariaLabel="icon-button opening info desc pop-up"
+                                />
+                            </PopUp>
+                        </div>
                     </div>
                     <span id="info item desc" className={styles.itemDesc}>
                         APR
@@ -235,18 +238,19 @@ const StakeDashboard: React.FC = () => {
                             {tokenName}
                         </span>
 
-                        <ButtonIconWrapper
-                            type="button"
-                            className={styles.infoIconBtn}
-                            ariaLabel="icon-button opening info desc pop-up"
-                        >
-                            <Icon
-                                name="icon-help-circle"
-                                widthSize="18"
-                                heightSize="18"
-                                fill="white"
-                            />
-                        </ButtonIconWrapper>
+                        <div className={styles.infoIconBtn}>
+                            <PopUp
+                                content="Rewards get allocated every second"
+                            >
+                                <Icon
+                                    name="icon-help-circle"
+                                    widthSize="18"
+                                    heightSize="18"
+                                    stroke="white"
+                                    ariaLabel="icon-button opening info desc pop-up"
+                                />
+                            </PopUp>
+                        </div>
                     </div>
                     <span id="info item desc" className={styles.itemDesc}>
                         Rewards

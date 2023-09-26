@@ -4,7 +4,7 @@ export interface ButtonIconWrapperProps extends ButtonHTMLAttributes<HTMLButtonE
     type?: 'button' | 'submit' | 'reset' | undefined;
     value?: string;
     disabled?: boolean;
-    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+    onClick?: (e: MouseEvent<HTMLElement>) => void;
     children?: React.ReactNode;
     className?: string;
     ariaLabel?: string;
