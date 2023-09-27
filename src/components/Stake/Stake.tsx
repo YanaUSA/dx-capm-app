@@ -1,32 +1,26 @@
 import { useState, ChangeEvent } from 'react';
-import {
-    useAccount,
-    useContractRead,
-    useContractWrite,
-    // usePrepareContractWrite,
-} from 'wagmi';
+import { useAccount, useContractRead, useContractWrite } from 'wagmi';
 
 import Input from '@kit/Input/Input';
 import Button from '@kit/Button/Button';
 import AvailableBalance from '@/components/AvailableBalance/AvailableBalance';
-import LoadingMessage from '@components/LoadingMessage/LoadingMessage';
 import RewardRate from '@components/RewardRate/RewardRate';
 
-import {formatToWei, formatFromWeiToEther} from '@helpers/helpersFunctions'
+import { formatToWei, formatFromWeiToEther } from '@helpers/helpersFunctions';
 import userAbi from '@contracts/userAbi.json';
 import abi from '@contracts/abi.json';
 
 import styles from './Stake.module.scss';
 
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 const Stake: React.FC = () => {
-    const { address, isConnecting, isConnected } = useAccount();
+    const { address } = useAccount();
     const [stake, setStake] = useState<number | string>();
     const [stakeError, setStakeError] = useState<string>('');
 
     //---- contract logic -----//
-    const { data, isLoading, isSuccess, write } = useContractWrite({
+    const { isLoading, isSuccess, isError, write } = useContractWrite({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
         functionName: 'stake',
@@ -41,8 +35,6 @@ const Stake: React.FC = () => {
 
     const userBalanceData = userBalance.data;
     const userBalanceError = userBalance.error;
-    const userBalanceIsError = userBalance.isError;
-    const userBalanceIsLoading = userBalance.isLoading;
 
     let availableToStake = '0.00';
     if (userBalanceData) {
@@ -67,19 +59,25 @@ const Stake: React.FC = () => {
             const sendStakeToken = formatToWei(stake);
 
             if (sendStakeToken > Number(userBalanceData)) {
-                setStakeError(
-                    'Amount of tokens you try to send is more than you have on a balance. Please enter correct amount of STRU'
+                toast.error(
+                    `You do not have enough tokens. Please try again`
                 );
             }
-            write?.({ args: [sendStakeToken] });
-        }
 
-        
-        if (userBalanceIsLoading) {toast("")}
+                write?.({ args: [sendStakeToken] });
+        }
 
         //--- input reset ---//
         setStake('');
     };
+
+    // if (isSuccess) {
+    //     toast.success(`${stake} STRU successfully added to Staking`);
+    // } else if (isError) {
+    //     toast.error('Something went wrong');
+    // } else if (isLoading) {
+    //     toast.info(`Adding ${stake} STRU to Staking`);
+    // }
 
     return (
         <div className={styles.stakeContainer}>
@@ -97,7 +95,6 @@ const Stake: React.FC = () => {
                 labelTextStyle={styles.regLabelText}
                 inputStyle={styles.inputStyle}
                 inputError={stakeError}
-                // handleBlur={handleBlurChange}
                 onChange={handleChange}
                 ariaLabel="Input to enter stake amount"
                 ariaInvalid={stakeError ? true : false}
@@ -105,7 +102,7 @@ const Stake: React.FC = () => {
                 required
             />
 
-            <AvailableBalance availableAmount={availableToStake}/>
+            <AvailableBalance availableAmount={availableToStake} />
 
             <Button
                 id="stake"

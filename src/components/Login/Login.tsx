@@ -5,7 +5,7 @@ import Icon from '@kit/Icon/Icon';
 import styles from './Login.module.scss';
 
 const Login: React.FC = () => {
-    const { connect, connectors, error, isLoading, pendingConnector } =
+    const { connect, connectors, error, isLoading } =
         useConnect();
 
     return (

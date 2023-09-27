@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from 'react';
+import { toast } from "react-toastify";
 import { useAccount, useContractRead, useContractWrite } from 'wagmi';
 import Input from '@kit/Input/Input';
 import Button from '@kit/Button/Button';
@@ -12,7 +13,7 @@ import styles from './Withdraw.module.scss';
 const Withdraw: React.FC = () => {
     const [withdraw, setwithdraw] = useState<number | string>();
     const [withdrawError, setWithdrawError] = useState<string>('');
-    const { address, isConnecting, isDisconnected } = useAccount();
+    const { address } = useAccount();
 
     //---- contract logic -----//
     const userBalance = useContractRead({
@@ -24,8 +25,6 @@ const Withdraw: React.FC = () => {
 
     const userBalanceData = userBalance.data;
     const userBalanceError = userBalance.error;
-    const userBalanceIsError = userBalance.isError;
-    const userBalanceIsLoading = userBalance.isLoading;
 
     let availableToWithdraw = '0.00';
     if (userBalanceData) {
@@ -34,7 +33,7 @@ const Withdraw: React.FC = () => {
         console.log(userBalanceError);
     }
 
-    const { data, isLoading, isSuccess, write } = useContractWrite({
+    const { isLoading, write } = useContractWrite({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
         functionName: 'withdraw',
@@ -57,8 +56,8 @@ const Withdraw: React.FC = () => {
             const getWithdraw = formatToWei(withdraw);
 
             if (getWithdraw > Number(userBalanceData)) {
-                return alert(
-                    'Amount of rewards you claim is too big. Please enter correct amount of STRU'
+                toast.error(
+                    'The amount of tokens you try to withdraw is is too big. Please try again'
                 );
             }
             write?.({ args: [getWithdraw] });
@@ -67,6 +66,12 @@ const Withdraw: React.FC = () => {
         // //--- input reset ---//
         setwithdraw('');
     };
+
+    // if (isSuccess) {
+    //     toast.success("Stakes are successfully withdrawn")
+    // } else if (isError) {
+    //     toast.error("Something went wrong")
+    // } 
 
     return (
         <div className={styles.withdrawContainer}>

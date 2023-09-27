@@ -20,24 +20,7 @@
 
     @include respond-to('desktop') {
         padding: 11px 40px;
-        // width: 1440px;
     }
-}
-
-.headerBox {
-    // display: flex;
-    // justify-content: space-between;
-
-    // margin: 0 auto;
-    // padding: 0 24px;
-
-    // @include respond-to('tablet') {
-    //     // padding: 0 48px;
-    // }
-
-    // @include respond-to('desktop') {
-    //     width: 1440px;
-    // }
 }
 
 .logoLink {

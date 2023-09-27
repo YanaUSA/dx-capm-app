@@ -1,24 +1,22 @@
-import Popup from 'reactjs-popup';
 import { useAccount, useContractRead } from 'wagmi';
 import abi from '@contracts/abi.json';
-import ButtonIconWrapper from '@kit/ButtonIconWrapper/ButtonIconWrapper';
-import Icon from '@kit/Icon/Icon';
 import { tokenName } from '@constants/constants';
 import useMatchMedia from '@hooks/useMatchMedia';
 import { formatFromWeiToEther } from '@helpers/helpersFunctions';
 
-import PopUp from '../popUp/popUp';
-
+import PopUp from '@components/popUp/popUp';
+import Icon from '@/kit/Icon/Icon';
 import styles from './StakeDashboard.module.scss';
+
 
 const SECONDS_IN_DAY = 24 * 60 * 60;
 
 const StakeDashboard: React.FC = () => {
     const { isMobile, isTablet } = useMatchMedia();
-    const { address, isConnecting, isDisconnected } = useAccount();
+    const { address } = useAccount();
 
     //------- STRU Staked Balance ------//
-    const { data, isError, isLoading, error } = useContractRead({
+    const { data, error } = useContractRead({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
         functionName: 'balanceOf',
@@ -41,8 +39,6 @@ const StakeDashboard: React.FC = () => {
 
     const rewardDurationData = rewardDuration.data;
     const rewardDurationError = rewardDuration.error;
-    const rewardDurationIsError = rewardDuration.isError;
-    const rewardDurationIsLoading = rewardDuration.isLoading;
 
     const totalStakes = useContractRead({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
@@ -52,8 +48,6 @@ const StakeDashboard: React.FC = () => {
 
     const totalStakesData = totalStakes.data;
     const totalStakesError = totalStakes.error;
-    const totalStakesIsError = totalStakes.isError;
-    const totalStakesIsLoading = totalStakes.isLoading;
 
     let APR = '0';
     if (rewardDurationData && totalStakesData) {
@@ -74,8 +68,6 @@ const StakeDashboard: React.FC = () => {
 
     const periodFinishData = periodFinish.data;
     const periodFinishError = periodFinish.error;
-    const periodFinishIsError = periodFinish.isError;
-    const periodFinishIsLoading = periodFinish.isLoading;
 
     let days = '0';
     if (periodFinishData) {
@@ -98,8 +90,6 @@ const StakeDashboard: React.FC = () => {
 
     const earnedRewardData = earnedReward.data;
     const earnedRewardError = earnedReward.error;
-    const earnedRewardIsError = earnedReward.isError;
-    const earnedRewardIsLoading = earnedReward.isLoading;
 
     let userReward = '0';
     if (earnedRewardData) {

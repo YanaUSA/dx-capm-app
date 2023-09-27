@@ -13,7 +13,7 @@ import styles from './Account.module.scss';
 
 const Account: React.FC<AccountProps> = props => {
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
-    const { address, isConnecting, isConnected, isDisconnected } = useAccount();
+    const { address } = useAccount();
 
     const userBalance = useBalance({
         address: address,
@@ -22,7 +22,7 @@ const Account: React.FC<AccountProps> = props => {
     const balanceData = userBalance.data?.formatted;
 
      //---- contract logic -----//
-    const { data, isError, isLoading } = useContractRead({
+    const { data } = useContractRead({
         address: '0x59Ec26901B19fDE7a96f6f7f328f12d8f682CB83',
         abi: userAbi,
         functionName: 'balanceOf',

@@ -30,7 +30,7 @@ const App: React.FC = () => {
             </WagmiConfig>
             <ToastContainer
                 position="bottom-right"
-                autoClose={4000}
+                autoClose={5000}
                 theme="dark"
                 pauseOnHover
             />

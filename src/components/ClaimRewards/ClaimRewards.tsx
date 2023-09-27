@@ -1,4 +1,5 @@
 import { useAccount, useContractRead, useContractWrite } from 'wagmi';
+import {toast } from 'react-toastify';
 import Button from '@kit/Button/Button';
 import AvailableBalance from '@components/AvailableBalance/AvailableBalance';
 
@@ -7,12 +8,8 @@ import abi from '@contracts/abi.json';
 
 import styles from './ClaimRewards.module.scss';
 
-import {toast } from 'react-toastify';
-
-
 const ClaimRewards: React.FC = () => {
     const { address } = useAccount();
-
 
         //---- contract logic -----//
     const earnedReward = useContractRead({
@@ -24,8 +21,6 @@ const ClaimRewards: React.FC = () => {
 
     const earnedRewardData = earnedReward.data;
     const earnedRewardError = earnedReward.error;
-    // const earnedRewardIsError = earnedReward.isError;
-    // const earnedRewardIsLoading = earnedReward.isLoading;
 
     let userReward = '0';
     if (earnedRewardData) {
@@ -34,7 +29,7 @@ const ClaimRewards: React.FC = () => {
         console.log(earnedRewardError);
     }
 
-    const { data, isLoading, isSuccess, write } = useContractWrite({
+    const { isLoading, isSuccess, isError, write } = useContractWrite({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
         functionName: 'claimReward',
@@ -50,7 +45,11 @@ const ClaimRewards: React.FC = () => {
 
     if (isSuccess) {
         toast.success("Rewards successfully withdrawn")
-    }    
+    } else if (isError) {
+        toast.error("Something went wrong...")
+    } else if (isLoading){
+        toast.info("Sending data...")
+    } 
 
     return (
         <div className={styles.withdrawContainer}>

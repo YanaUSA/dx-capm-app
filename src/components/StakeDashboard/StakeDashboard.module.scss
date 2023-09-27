@@ -17,8 +17,6 @@
 }
 
 .infoList {
-    // height:72px; // need to fix
-
     display: flex;
     margin-top: 26px;
 
@@ -39,13 +37,6 @@
     }
 
     &__item {
-
-        @include respond-to('tablet') {
-            // flex-wrap: wrap;
-            // min-width: calc((100% - 216px) / 4);
-
-        }
-
         @include respond-to('desktop') {
             display: flex;
             align-items: baseline;
@@ -55,18 +46,7 @@
 
 .infoItemBox {
     display: flex;
-    // flex-wrap: wrap;
-
     align-items: baseline;
-
-    @include respond-mob-minMax {        
-        // margin-bottom: 4px;
-    }
-
-    @include respond-to('tablet') {
-        // align-items: baseline;
-        //  align-items: center;
-    }
 }
 
 .itemValue {
@@ -104,8 +84,6 @@
     }
 
     @include respond-to('desktop') {
-        // align-self: baseline;
-
         order: 2;
     }
 }

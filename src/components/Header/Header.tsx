@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useAccount, useConnect, useBalance, useContractRead } from 'wagmi';
+import { useAccount, useConnect } from 'wagmi';
 import Button from '@kit/Button/Button';
 import Icon from '@kit/Icon/Icon';
 import Account from '@components/Account/Account';
@@ -8,8 +8,8 @@ import { clientSite } from '@constants/constants';
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
-    const { connect, connectors, isLoading, error, pendingConnector } = useConnect();
-    const { address, isConnecting, isConnected, isDisconnected } = useAccount();
+    const { connect, connectors, isLoading } = useConnect();
+    const { isConnected } = useAccount();
 
     const mainConnector = connectors.find(
         connector => connector.id === 'metaMask'
@@ -52,7 +52,6 @@ const Header: React.FC = () => {
                         )}
                     </div>
                 )}
-            {/* </div> */}
         </header>
     );
 };

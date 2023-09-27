@@ -23,8 +23,6 @@ const RewardRate: React.FC<RewardsRateProps> = ({ userInput }) => {
 
     const periodFinishData = periodFinish.data;
     const periodFinishError = periodFinish.error;
-    const periodFinishIsError = periodFinish.isError;
-    const periodFinishIsLoading = periodFinish.isLoading;
 
     const rewardRate = useContractRead({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
@@ -34,10 +32,8 @@ const RewardRate: React.FC<RewardsRateProps> = ({ userInput }) => {
 
     const rewardRateData = rewardRate.data;
     const rewardRateError = rewardRate.error;
-    const rewardRateIsError = rewardRate.isError;
-    const rewardRateIsLoading = rewardRate.isLoading;
 
-    const { data, isError, isLoading, error } = useContractRead({
+    const { data, error } = useContractRead({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
         functionName: 'balanceOf',
@@ -52,8 +48,6 @@ const RewardRate: React.FC<RewardsRateProps> = ({ userInput }) => {
 
     const totalStakesData = totalStakes.data;
     const totalStakesError = totalStakes.error;
-    const totalStakesIsError = totalStakes.isError;
-    const totalStakesIsLoading = totalStakes.isLoading;
 
     let totalRewardRate = '0';
     let totalRewardRateInput = '0';
