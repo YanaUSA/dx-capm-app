@@ -11,7 +11,7 @@ import { AccountProps } from './Account.types';
 import styles from './Account.module.scss';
 
 
-const Account: React.FC<AccountProps> = props => {
+const Account: React.FC<AccountProps> = () => {
     const { isMobile, isTablet, isDesktop } = useMatchMedia();
     const { address } = useAccount();
 

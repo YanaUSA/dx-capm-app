@@ -20,7 +20,7 @@ const Stake: React.FC = () => {
     const [stakeError, setStakeError] = useState<string>('');
 
     //---- contract logic -----//
-    const { isLoading, isSuccess, isError, write } = useContractWrite({
+    const { isLoading, write } = useContractWrite({
         address: '0x2F112ED8A96327747565f4d4b4615be8fb89459d',
         abi: abi,
         functionName: 'stake',
