@@ -5,7 +5,7 @@ import { LoadingMessageProps } from './LoadingMessage.types';
 
 import styles from './LoadingMessage.module.scss';
 
-const LoadingMessage: React.FC<LoadingMessageProps> = props => {
+const LoadingMessage: React.FC<LoadingMessageProps> = ({stakeAmount}) => {
     return (
         <div className={styles.LoadingMessageContainer}>
             <Icon
@@ -15,13 +15,13 @@ const LoadingMessage: React.FC<LoadingMessageProps> = props => {
                 className={styles.iconStyles}
                 ariaLabel="Loading circle icon"
             />
-            <div>
+            <div className={styles.messageContainer}>
                 <span className={styles.spanStyle}>Adding</span>
                 <span
                     className={styles.spanStyle}
                     style={{ fontWeight: '700' }}
                 >
-                    {props.stakeAmount}
+                    {stakeAmount}
                 </span>
                 <span
                     className={styles.spanStyle}

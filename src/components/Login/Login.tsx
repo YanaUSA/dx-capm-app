@@ -31,6 +31,7 @@ const Login: React.FC = () => {
                     <Button
                         className={styles.loginBtn}
                         disabled={!connector.ready}
+                        loading={isLoading}
                         key={connector.id}
                         onClick={() => connect({ connector })}
                         type="submit"
@@ -39,9 +40,6 @@ const Login: React.FC = () => {
                     >
                         {connector.name}
                         {!connector.ready && ' (unsupported)'}
-                        {isLoading &&
-                            pendingConnector?.id === connector.id &&
-                            ' (connecting)'}
                     </Button>
                 ))}
             </div>

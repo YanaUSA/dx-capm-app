@@ -98,6 +98,7 @@ const Withdraw: React.FC = () => {
                 buttonText="Withdraw"
                 onClick={handleSubmit}
                 ariaLabel="Button to withdraw"
+                loading={isLoading}
             />
         </div>
     );

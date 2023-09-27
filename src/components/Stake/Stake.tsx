@@ -9,7 +9,7 @@ import {
 import Input from '@kit/Input/Input';
 import Button from '@kit/Button/Button';
 import AvailableBalance from '@/components/AvailableBalance/AvailableBalance';
-// import LoadingMessage from '@components/LoadingMessage/LoadingMessage';
+import LoadingMessage from '@components/LoadingMessage/LoadingMessage';
 import RewardRate from '@components/RewardRate/RewardRate';
 
 import {formatToWei, formatFromWeiToEther} from '@helpers/helpersFunctions'
@@ -17,6 +17,8 @@ import userAbi from '@contracts/userAbi.json';
 import abi from '@contracts/abi.json';
 
 import styles from './Stake.module.scss';
+
+import { toast } from "react-toastify";
 
 const Stake: React.FC = () => {
     const { address, isConnecting, isConnected } = useAccount();
@@ -65,21 +67,19 @@ const Stake: React.FC = () => {
             const sendStakeToken = formatToWei(stake);
 
             if (sendStakeToken > Number(userBalanceData)) {
-                return alert(
+                setStakeError(
                     'Amount of tokens you try to send is more than you have on a balance. Please enter correct amount of STRU'
                 );
             }
             write?.({ args: [sendStakeToken] });
         }
 
+        
+        if (userBalanceIsLoading) {toast("")}
+
         //--- input reset ---//
         setStake('');
     };
-
-    // console.log("data****", data)
-    // if(data) {
-    //     window.location.reload(true)
-    // }
 
     return (
         <div className={styles.stakeContainer}>
@@ -107,14 +107,13 @@ const Stake: React.FC = () => {
 
             <AvailableBalance availableAmount={availableToStake}/>
 
-            {/* <LoadingMessage stakeAmount={stake} /> */}
-
             <Button
                 id="stake"
                 type="submit"
                 buttonText="Stake"
                 onClick={handleSubmit}
                 ariaLabel="Button to stake"
+                loading={isLoading}
             />
         </div>
     );

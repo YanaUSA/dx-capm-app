@@ -20,7 +20,20 @@
 }
 
 .iconStyles {
-    margin-right: 16px;
+    // margin-right: 16px;
+
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: spin 1000ms infinite linear;
+    
+}
+
+.messageContainer {
+    display: flex;
+        justify-content: center;
+        align-items: center;
+    margin-left: 16px;
 }
 
 .spanStyle {
@@ -30,12 +43,21 @@
     line-height: 1.3;
     letter-spacing: 0.02em;
     color: getColor('white');
-
+    
     &:not(:last-child) {
         margin-right: 8px;
     }
 
     @include respond-to('tablet') {
         font-size: getFontSize('l-small');
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }

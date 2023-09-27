@@ -6,6 +6,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     value?: string;
     buttonText?: string;
     disabled?: boolean;
+    loading?: boolean;
     onClick?: (e: any) => void;
     children?: React.ReactNode;
     className?: string;

@@ -39,6 +39,7 @@ const Header: React.FC = () => {
                                         className={styles.headerBtn}
                                         type="submit"
                                         disabled={!connector.ready}
+                                        loading={isLoading}
                                         key={connector.id}
                                         onClick={() => connect({ connector })}
                                         // buttonText="Connect wallet"
@@ -46,10 +47,6 @@ const Header: React.FC = () => {
                                     >
                                         {connector.name}
                                         {!connector.ready && ' (unsupported)'}
-                                        {isLoading &&
-                                            pendingConnector?.id ===
-                                                connector.id &&
-                                            ' (connecting)'}
                                     </Button>
                                 )
                         )}

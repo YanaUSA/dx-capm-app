@@ -1,3 +1,5 @@
+import LoaderIcon from '@assets/icons/loader.svg';
+
 import { ButtonProps } from './Button.types';
 
 import styles from './Button.module.scss';
@@ -8,6 +10,7 @@ const Button: React.FC<ButtonProps> = ({
     value,
     buttonText,
     disabled = false,
+    loading,
     onClick,
     children,
     className,
@@ -23,7 +26,16 @@ const Button: React.FC<ButtonProps> = ({
             className={`${styles.button} ${className}`}
             aria-label={ariaLabel}
         >
-            {buttonText || children}
+            {!loading ? (
+                buttonText || children
+            ) : (
+                <object
+                    data={LoaderIcon}
+                    width="24"
+                    height="24"
+                    className={styles.button__spinner}
+                ></object>
+            )}
         </button>
     );
 };
